@@ -1,5 +1,5 @@
 package com.mega.parts.MegaPartsApplication.domain.entities;
-
+//https://github.com/lerocha/chinook-database/blob/master/ChinookDatabase/DataSources/CreatePostgreSql.bat
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

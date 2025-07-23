@@ -1,5 +1,5 @@
 
-
+package com.mega.parts.MegaPartsApplication.domain.entities;
 
 
 
