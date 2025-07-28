@@ -19,6 +19,6 @@ public class DepartmentsEntity{
 
 private Long department_id;
 private String department_name;
-private Employees manager_id;
+private String manager_id;
 
 }

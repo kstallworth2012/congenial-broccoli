@@ -1,6 +1,8 @@
 package com.mega.parts.MegaPartsApplication.domain.entities;
 
 import com.mega.parts.MegaPartsApplication.domain.entities.DepartmentsEntity;
+import com.mega.parts.MegaPartsApplication.domain.entities.JobsEntity;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,10 +20,10 @@ private String last_name;
 private String email;
 private String phone_number;
 private LocalDateTime hire_date;
-private Jobs job_id;
+private JobsEntity job_id;
 private double salary;
 private double commission_pct;
 private String manager_id;
-private Departments department_id;
+private DepartmentsEntity department_id;
 
 }
