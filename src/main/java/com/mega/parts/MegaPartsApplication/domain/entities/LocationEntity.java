@@ -11,14 +11,21 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.CascadeType;
 
-// import lombok.AllArgsConstructor;
-// import lombok.Builder;
-// import lombok.Data;
-// import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
-// @Data
-// @AllArgsConstructor
-// @NoArgsConstructor
-// @Builder
-public class LocationEntity {}
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Entity
+@Table(name="locations")
+public class LocationEntity {
+
+
+	@Id 
+	private Long locations_id;
+}

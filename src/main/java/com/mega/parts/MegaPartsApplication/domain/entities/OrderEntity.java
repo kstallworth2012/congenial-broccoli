@@ -13,14 +13,22 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.CascadeType;
 
-// import lombok.AllArgsConstructor;
-// import lombok.Builder;
-// import lombok.Data;
-// import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
-// @Data
-// @AllArgsConstructor
-// @NoArgsConstructor
-// @Builder
-public class OrderEntity{}
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Entity
+@Table(name="orders") 
+public class OrderEntity{
+
+
+	@Id 
+	private Long order_id;
+	
+}

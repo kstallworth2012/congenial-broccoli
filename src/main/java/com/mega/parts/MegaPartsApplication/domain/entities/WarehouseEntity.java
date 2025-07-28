@@ -23,4 +23,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class WarehouseEntity{}
+@Entity
+@Table(name = "warehouses")
+public class WarehouseEntity{
+
+	@Id
+	private Long warehouse_id;
+
+}

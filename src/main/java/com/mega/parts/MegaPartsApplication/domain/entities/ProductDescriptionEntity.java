@@ -13,14 +13,20 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.CascadeType;
 
-// import lombok.AllArgsConstructor;
-// import lombok.Builder;
-// import lombok.Data;
-// import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
-// @Data
-// @AllArgsConstructor
-// @NoArgsConstructor
-// @Builder
-public class ProductDescriptionEntity{}
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Entity
+@Table(name = "product_desc")
+public class ProductDescriptionEntity{
+
+	@Id
+	private Long product_desc_id;
+}
