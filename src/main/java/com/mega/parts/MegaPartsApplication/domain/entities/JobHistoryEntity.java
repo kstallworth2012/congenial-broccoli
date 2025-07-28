@@ -26,8 +26,12 @@ public class JobHistoryEntity{
 @Id
 //@GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "jobHistory_id_seq")
 private Long jobHistoryId;
-/*
+
+
+@OneToOne(cascade = CascadeType.ALL)
+@JoinColumn(name = "employee_id", referencedColumnName = "employee_id")
 private Employees employee_id;
+
 private LocalDateTime start_date;
 private LocalDateTime end_date;
 
