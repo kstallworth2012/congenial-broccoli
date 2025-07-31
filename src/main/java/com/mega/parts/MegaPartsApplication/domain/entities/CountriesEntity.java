@@ -28,6 +28,8 @@ public class CountriesEntity{
 
     @Id 
     private Long country_id;
+    private String country_name;
+	private String region_id;
 
 	
 }

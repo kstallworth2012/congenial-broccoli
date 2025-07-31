@@ -28,4 +28,9 @@ public class LocationEntity {
 
 	@Id 
 	private Long locations_id;
+	private String street_address;
+	private String postal_code;
+	private String city;
+	private String state_province;
+	private String country_id;
 }
