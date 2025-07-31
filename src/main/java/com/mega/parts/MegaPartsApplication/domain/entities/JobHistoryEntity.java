@@ -2,12 +2,20 @@ package com.mega.parts.MegaPartsApplication.domain.entities;
 
 import com.mega.parts.MegaPartsApplication.domain.entities.DepartmentsEntity;
 import com.mega.parts.MegaPartsApplication.domain.entities.EmployeesEntity;
+import com.mega.parts.MegaPartsApplication.domain.entities.JobsEntity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.CascadeType;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -30,7 +38,7 @@ private Long jobHistoryId;
 
 @OneToOne(cascade = CascadeType.ALL)
 @JoinColumn(name = "employee_id", referencedColumnName = "employee_id")
-private Employees employee_id;
+private EmployeesEntity employee_id;
 
 private LocalDateTime start_date;
 private LocalDateTime end_date;
@@ -38,11 +46,13 @@ private LocalDateTime end_date;
 
 //jobhistory can have many jobs 
 @ManyToOne(cascade = CascadeType.ALL)
-private Jobs job_id;
+@JoinColumn(name = job_id)
+private JobsEntity job_id;
 
 
 //Job History can have many departments?
 @ManyToOne(cascade = CascadeType.ALL)
-private Department department_id;
-*/
+@JoinColumn(name = department_id)
+private DepartmentsEntity department_id;
+
 }

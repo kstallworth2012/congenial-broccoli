@@ -1,6 +1,6 @@
 package com.mega.parts.MegaPartsApplication.domain.entities;
 
-
+import com.mega.parts.MegaPartsApplication.domain.entities.ProductInformationEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
@@ -26,6 +26,11 @@ import lombok.NoArgsConstructor;
 public class OrderItemEntity{
 
 	@Id
-	private Long orderitems_id;
+	private Long line_item_id;
+	@OneToOne
+	@JoinColumn(name = "product__info_id")
+	private ProductInformationEntity product_id;
+	private Double unit_price;
+	
 
 }

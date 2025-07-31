@@ -28,5 +28,9 @@ import lombok.NoArgsConstructor;
 public class ProductDescriptionEntity{
 
 	@Id
-	private Long product_desc_id;
+	private Long product_id;
+	private String language_id;
+	private String translated_name;
+	private String translated_description;
+	
 }
