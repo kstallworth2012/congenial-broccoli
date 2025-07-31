@@ -26,5 +26,6 @@ import lombok.NoArgsConstructor;
 @Table(name = "regions")
 public class RegionsEntity{
 
+	@Id
 	private Long region_id;
 }

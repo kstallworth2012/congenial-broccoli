@@ -23,4 +23,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class InventoryEntity{}
+@Entity
+@Table(name="Inventory")
+public class InventoryEntity{
+
+	@Id
+	private Long inventory_id;
+}

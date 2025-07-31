@@ -16,7 +16,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
@@ -27,7 +27,7 @@ import lombok.NoArgsConstructor;
 public class CustomerEntity{
 	@Id
 	private Long customer_id;
-	private String customer_id; // not null number(6),
+	// private String customer_id; // not null number(6),
 	private String cust_first_name; // not null varchar2(20),
 	private String cust_last_name; // not null varchar2(20),
 	private String cust_address; // cust_address_typ,

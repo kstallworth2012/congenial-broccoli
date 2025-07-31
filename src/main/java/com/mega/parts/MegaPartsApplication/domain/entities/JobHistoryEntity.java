@@ -46,13 +46,15 @@ private LocalDateTime end_date;
 
 //jobhistory can have many jobs 
 @ManyToOne(cascade = CascadeType.ALL)
-@JoinColumn(name = job_id)
+@JoinColumn
+// (name = job_id)
 private JobsEntity job_id;
 
 
 //Job History can have many departments?
 @ManyToOne(cascade = CascadeType.ALL)
-@JoinColumn(name = department_id)
+@JoinColumn
+// (name = department_id)
 private DepartmentsEntity department_id;
 
 }
