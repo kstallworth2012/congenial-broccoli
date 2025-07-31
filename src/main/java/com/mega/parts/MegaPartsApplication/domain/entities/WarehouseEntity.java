@@ -29,8 +29,8 @@ public class WarehouseEntity{
 
 	@Id
 	private Long warehouse_id;
-	private String warehouse_spec
-	private String warehouse_name
-	private String location_id
-	private String wh_geo_location
+	private String warehouse_spec;
+	private String warehouse_name;
+	private String location_id;
+	private String wh_geo_location;
 }
