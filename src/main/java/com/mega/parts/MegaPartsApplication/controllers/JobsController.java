@@ -2,31 +2,32 @@ package com.mega.parts.MegaPartsApplication.controllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.mega.parts.MegaPartsApplication.domain.entities;
-import com.mega.parts.MegaPartsApplication.repositories;
+import org.springframework.http.ResponseEntity;
+import com.mega.parts.MegaPartsApplication.domain.entities.JobsEntity;
+import com.mega.parts.MegaPartsApplication.repositories.JobsRepository;
 
 
 @RestController
 @RequestMapping("/api/jobs")
 public class JobsController{
 
-		private final Repository Repository;
+		private final JobsRepository jobsRepository;
 
-    public Controller(Repository _Repository) {
-        this.Repository = _Repository;
+    public JobsController(JobsRepository _jobsRepository) {
+        this.JobsRepository = _jobsRepository;
     }
 
 
     // Read All
     @GetMapping
-    public Iterable<Entity> getAll___() {
-        return ____Repository.findAll();
+    public Iterable<JobsEntity> getAllJobs() {
+        return JobsRepository.findAll();
     }
 
     // Read One
     @GetMapping("/{id}")
-    public ResponseEntity<User> get____ById(@PathVariable Long id) {
-        return ___Repository.findById(id)
+    public ResponseEntity<JobsEntity> getJobsById(@PathVariable Long id) {
+        return JobsRepository.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }

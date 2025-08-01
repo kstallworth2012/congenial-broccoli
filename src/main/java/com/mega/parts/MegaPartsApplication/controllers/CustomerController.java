@@ -2,31 +2,32 @@ package com.mega.parts.MegaPartsApplication.controllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.mega.parts.MegaPartsApplication.domain.entities;
-import com.mega.parts.MegaPartsApplication.repositories;
+import org.springframework.http.ResponseEntity;
+import com.mega.parts.MegaPartsApplication.domain.entities.CustomerEntity;
+import com.mega.parts.MegaPartsApplication.repositories.CustomerRepository;
 
 
 @RestController
 @RequestMapping("/api/customers")
 public class CustomerController{
 
-	private final Repository Repository;
+	private final CustomerRepository customerRepository;
 
-    public Controller(Repository _Repository) {
-        this.Repository = _Repository;
+    public CustomerController(CustomerRepository _customerRepository) {
+        this.customerRepository = _customerRepository;
     }
 
 
     // Read All
     @GetMapping
-    public Iterable<Entity> getAll___() {
-        return ____Repository.findAll();
+    public Iterable<CustomerEntity> getAllCustomers() {
+        return CustomerRepository.findAll();
     }
 
     // Read One
     @GetMapping("/{id}")
-    public ResponseEntity<User> get____ById(@PathVariable Long id) {
-        return ___Repository.findById(id)
+    public ResponseEntity<CustomerEntity> getCustomerRepositoryById(@PathVariable Long id) {
+        return CustomerRepository.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
