@@ -1,32 +1,34 @@
 package com.mega.parts.MegaPartsApplication.controllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.mega.parts.MegaPartsApplication.domain.entities.Entity;
-import com.mega.parts.MegaPartsApplication.repositories.Repository;
+import com.mega.parts.MegaPartsApplication.domain.entities.RegionEntity;
+import com.mega.parts.MegaPartsApplication.repositories.RegionRepository;
 
 @RestController
 @RequestMapping("/api/regions")
 public class RegionController{
 
 
-		private final InventoryInventoryRepository inventoryRepository;
+		private final RegionRepository regionRepository;
 
-    public Controller(InventoryRepository _inventoryRepository) {
-        this.inventoryRepository = _inventoryRepository;
+    public RegionController(RegionRepository _regionRepository) {
+        this.regionRepository = _regionRepository;
     }
 
 
     // Read All
     @GetMapping
-    public Iterable<InventoryEntity> getAllInventory() {
-        return inventoryRepository.findAll();
+    public Iterable<InventoryEntity> getAllRegions() {
+        return regionRepository.findAll();
     }
 
     // Read One
     @GetMapping("/{id}")
-    public ResponseEntity<InventoryEntity> getInventoryById(@PathVariable Long id) {
-        return inventoryRepository.findById(id)
+    public ResponseEntity<regionEntity> getRegionRepositoryById(@PathVariable Long id) {
+        return regionRepository.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }

@@ -15,7 +15,7 @@ public class JobHistoryController{
 
 	private final JobHistoryRepository jobHistoryRepository;
 
-    public Controller(JobHistoryRepository _jobHistoryRepository) {
+    public JobHistoryController(JobHistoryRepository _jobHistoryRepository) {
         this.jobHistoryRepository = _jobHistoryRepository;
     }
 

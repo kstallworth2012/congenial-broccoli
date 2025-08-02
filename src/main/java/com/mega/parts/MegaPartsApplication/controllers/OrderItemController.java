@@ -14,7 +14,7 @@ public class OrderItemController{
 
 		private final OrderItemRepository orderItemRepository;
 
-    public Controller(OrderItemRepository _orderItemRepository) {
+    public OrderItemController(OrderItemRepository _orderItemRepository) {
         this.OrderItemRepository = _orderItemRepository;
     }
 
