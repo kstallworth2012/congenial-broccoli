@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.ResponseEntity;
 import com.mega.parts.MegaPartsApplication.domain.entities.OrderItemEntity;
 import com.mega.parts.MegaPartsApplication.repositories.OrderItemRepository;
-
+import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 @RequestMapping("/api/order-items")
