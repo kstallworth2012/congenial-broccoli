@@ -1,12 +1,17 @@
 package com.mega.parts.MegaPartsApplication.services;
 
+import java.util.List;
+import java.util.Optional;
+
+import com.mega.parts.MegaPartsApplication.domain.entities.ProductDescriptionEntity;
+
 public interface ProductDescriptionService {
 	
-	Entity createCountry(Entity _);
+	ProductDescriptionEntity createProductDescription(ProductDescriptionEntity _ProductDescription);
 	
-	List<Entity> findAll();
+	List<ProductDescriptionEntity> findAll();
 	
-	 Optional<Entity> findOne(String id);
+	 Optional<ProductDescriptionEntity> findOne(String id);
 	 
 	 boolean isExists(String id);
 

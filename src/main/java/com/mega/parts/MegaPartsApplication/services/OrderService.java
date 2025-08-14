@@ -1,14 +1,19 @@
 package com.mega.parts.MegaPartsApplication.services;
 
+import java.util.List;
+import java.util.Optional;
+
+import com.mega.parts.MegaPartsApplication.domain.entities.OrderEntity;
+
 public interface OrderService {
 	
-	Entity createCountry(Entity _);
+	OrderEntity createOrder(OrderEntity _order);
 	
-	List<Entity> findAll();
+	List<OrderEntity> findAll();
 
 
 
-	Optional<Entity> findOne(String id);
+	Optional<OrderEntity> findOne(String id);
 		 
 	boolean isExists(String id);
 
