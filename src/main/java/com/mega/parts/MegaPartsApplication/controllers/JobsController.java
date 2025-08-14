@@ -13,9 +13,9 @@ import com.mega.parts.MegaPartsApplication.repositories.JobRepository;
 @RequestMapping("/api/jobs")
 public class JobsController{
 
-		private final JobsRepository jobsRepository;
+		private final JobRepository jobsRepository;
 
-    public JobsController(JobsRepository _jobsRepository) {
+    public JobsController(JobRepository _jobsRepository) {
         this.JobsRepository = _jobsRepository;
     }
 
@@ -23,13 +23,13 @@ public class JobsController{
     // Read All
     @GetMapping
     public Iterable<JobsEntity> getAllJobs() {
-        return JobsRepository.findAll();
+        return jobsRepository.findAll();
     }
 
     // Read One
     @GetMapping("/{id}")
     public ResponseEntity<JobsEntity> getJobsById(@PathVariable Long id) {
-        return JobsRepository.findById(id)
+        return jobsRepository.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }

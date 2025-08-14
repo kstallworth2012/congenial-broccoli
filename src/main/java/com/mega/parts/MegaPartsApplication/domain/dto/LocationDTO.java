@@ -1,0 +1,19 @@
+package com.mega.parts.MegaPartsApplication.domain.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class LocationDTO {
+	private Long locations_id;
+	private String street_address;
+	private String postal_code;
+	private String city;
+	private String state_province;
+	private String country_id;
+}
