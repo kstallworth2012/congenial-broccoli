@@ -12,7 +12,7 @@ public interface CountriesService {
 	
 	List<CountriesEntity> findAll();
 	
-	 Optional<CountriesEntity> findOne(String id);
+	 Optional<CountriesEntity> findOne(Long id);
 	 
-	 boolean isExists(String id);
+	 boolean isExists(Long id);
 }

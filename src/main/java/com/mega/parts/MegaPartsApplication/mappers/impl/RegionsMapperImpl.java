@@ -8,10 +8,11 @@ import com.mega.parts.MegaPartsApplication.domain.entities.RegionsEntity;
 import com.mega.parts.MegaPartsApplication.mappers.Mapper;
 
 @Component
-public class RegionsMapperImpl implements Mapper<RegionsDTO, RegionsDTO> {
+public class RegionsMapperImpl implements Mapper<RegionsEntity, RegionsDTO> {
 
 	
 	private ModelMapper modelMapper;
+
 	
 	
 	
@@ -26,9 +27,13 @@ public class RegionsMapperImpl implements Mapper<RegionsDTO, RegionsDTO> {
 	}
 
 	@Override
-	public RegionsDTO mapFrom(RegionsDTO b) {
+	public RegionsEntity mapFrom(RegionsDTO b) {
 		// TODO Auto-generated method stub
 		return modelMapper.map(b,RegionsEntity.class);
 	}
+	
+	
+	
+	
 
 }
