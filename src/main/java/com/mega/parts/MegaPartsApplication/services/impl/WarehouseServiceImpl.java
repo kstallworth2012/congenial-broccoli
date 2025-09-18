@@ -6,10 +6,20 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.mega.parts.MegaPartsApplication.domain.entities.WarehouseEntity;
+import com.mega.parts.MegaPartsApplication.repositories.WarehouseRepository;
 import com.mega.parts.MegaPartsApplication.services.WarehouseService;
 
 @Service
 public class WarehouseServiceImpl implements WarehouseService {
+
+	
+	private WarehouseRepository warehouseRepository;
+	
+		
+	
+	public WarehouseServiceImpl(WarehouseRepository warehouseRepository) {
+		this.warehouseRepository = warehouseRepository;
+	}
 
 	@Override
 	public WarehouseEntity createWarehouse(WarehouseEntity _warehouse) {

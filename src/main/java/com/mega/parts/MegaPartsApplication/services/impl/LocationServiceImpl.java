@@ -6,11 +6,15 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.mega.parts.MegaPartsApplication.domain.entities.LocationEntity;
+import com.mega.parts.MegaPartsApplication.repositories.LocationRepository;
 import com.mega.parts.MegaPartsApplication.services.LocationService;
 
 @Service
 public class LocationServiceImpl implements LocationService {
 
+	
+	private LocationRepository locationRepository;
+	
 	@Override
 	public LocationEntity createLocation(LocationEntity _Location) {
 		// TODO Auto-generated method stub

@@ -12,8 +12,8 @@ public interface CustomerService {
 	
 	List<CustomerEntity> findAll();
 	
-	 Optional<CustomerEntity> findOne(String id);
+	 Optional<CustomerEntity> findOne(Long id);
 	 
-	 boolean isExists(String id);
+	 boolean isExists(Long id);
 
 }

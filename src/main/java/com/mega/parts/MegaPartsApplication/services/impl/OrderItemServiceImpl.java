@@ -6,11 +6,22 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.mega.parts.MegaPartsApplication.domain.entities.OrderItemEntity;
+import com.mega.parts.MegaPartsApplication.repositories.OrderItemRepository;
 import com.mega.parts.MegaPartsApplication.services.OrderItemService;
 
 
 @Service
 public class OrderItemServiceImpl implements OrderItemService {
+
+	
+	
+	private OrderItemRepository orderItemRepository;
+	
+	
+	
+	public OrderItemServiceImpl(OrderItemRepository orderItemRepository) {
+		this.orderItemRepository = orderItemRepository;
+	}
 
 	@Override
 	public OrderItemEntity createOrderItem(OrderItemEntity _orderItem) {

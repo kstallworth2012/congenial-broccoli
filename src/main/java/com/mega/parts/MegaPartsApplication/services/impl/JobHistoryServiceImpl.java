@@ -6,10 +6,20 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.mega.parts.MegaPartsApplication.domain.entities.JobHistoryEntity;
+import com.mega.parts.MegaPartsApplication.repositories.JobHistoryRepository;
 import com.mega.parts.MegaPartsApplication.services.JobHistoryService;
 
 @Service
 public class JobHistoryServiceImpl implements JobHistoryService {
+
+	
+	private JobHistoryRepository jobHistoryRepository;
+	
+	
+	
+	public JobHistoryServiceImpl(JobHistoryRepository jobHistoryRepository) {
+		this.jobHistoryRepository = jobHistoryRepository;
+	}
 
 	@Override
 	public JobHistoryEntity createJobHistory(JobHistoryEntity _JobHistory) {

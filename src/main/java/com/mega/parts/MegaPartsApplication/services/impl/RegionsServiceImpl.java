@@ -6,10 +6,22 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.mega.parts.MegaPartsApplication.domain.entities.RegionsEntity;
+import com.mega.parts.MegaPartsApplication.repositories.RegionsRepository;
 import com.mega.parts.MegaPartsApplication.services.RegionsService;
 
 @Service
 public class RegionsServiceImpl implements RegionsService {
+
+	
+	
+	private RegionsRepository regionsRepository;
+	
+	
+	
+	
+	public RegionsServiceImpl(RegionsRepository regionsRepository) {
+		this.regionsRepository = regionsRepository;
+	}
 
 	@Override
 	public RegionsEntity createRegions(RegionsEntity _regions) {

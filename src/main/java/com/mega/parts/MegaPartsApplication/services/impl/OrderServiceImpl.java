@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.mega.parts.MegaPartsApplication.domain.entities.OrderEntity;
+import com.mega.parts.MegaPartsApplication.repositories.OrderRepository;
 import com.mega.parts.MegaPartsApplication.services.OrderService;
 
 
@@ -14,6 +15,14 @@ import com.mega.parts.MegaPartsApplication.services.OrderService;
 
 @Service
 public class OrderServiceImpl implements OrderService {
+
+	
+	
+	private OrderRepository orderRepository;
+	
+	public OrderServiceImpl(OrderRepository orderRepository) {
+		this.orderRepository = orderRepository;
+	}
 
 	@Override
 	public OrderEntity createOrder(OrderEntity _order) {

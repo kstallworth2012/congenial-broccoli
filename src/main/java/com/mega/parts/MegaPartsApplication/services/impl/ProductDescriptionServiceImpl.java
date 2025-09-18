@@ -6,11 +6,22 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.mega.parts.MegaPartsApplication.domain.entities.ProductDescriptionEntity;
+import com.mega.parts.MegaPartsApplication.repositories.ProductDescriptionRepository;
 import com.mega.parts.MegaPartsApplication.services.ProductDescriptionService;
 
 
 @Service
 public class ProductDescriptionServiceImpl implements ProductDescriptionService {
+
+	
+	
+	
+	private ProductDescriptionRepository productDescriptionRepository;
+	
+	
+	public ProductDescriptionServiceImpl(ProductDescriptionRepository productDescriptionRepository) {
+		this.productDescriptionRepository = productDescriptionRepository;
+	}
 
 	@Override
 	public ProductDescriptionEntity createProductDescription(ProductDescriptionEntity _ProductDescription) {
