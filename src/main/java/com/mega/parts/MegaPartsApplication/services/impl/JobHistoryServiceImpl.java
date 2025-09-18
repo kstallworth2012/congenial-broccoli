@@ -2,6 +2,8 @@ package com.mega.parts.MegaPartsApplication.services.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import org.springframework.stereotype.Service;
 
@@ -24,13 +26,14 @@ public class JobHistoryServiceImpl implements JobHistoryService {
 	@Override
 	public JobHistoryEntity createJobHistory(JobHistoryEntity _JobHistory) {
 		// TODO Auto-generated method stub
-		return null;
+		return jobHistoryRepository.save(_JobHistory);
 	}
 
 	@Override
 	public List<JobHistoryEntity> findAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return StreamSupport.stream(jobHistoryRepository.findAll().spliterator(),false).collect(Collectors.toList());
+
 	}
 
 	@Override
