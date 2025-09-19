@@ -2,6 +2,8 @@ package com.mega.parts.MegaPartsApplication.services.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import org.springframework.stereotype.Service;
 
@@ -24,8 +26,7 @@ public class LocationServiceImpl implements LocationService {
 	@Override
 	public List<LocationEntity> findAll() {
 		// TODO Auto-generated method stub
-		return null;
-	}
+		return StreamSupport.stream(locationRepository.findAll().spliterator(),false).collect(Collectors.toList());	}
 
 	@Override
 	public Optional<LocationEntity> findOne(String id) {

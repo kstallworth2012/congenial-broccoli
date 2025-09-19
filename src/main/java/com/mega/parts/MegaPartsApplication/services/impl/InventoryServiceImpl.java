@@ -6,10 +6,21 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.mega.parts.MegaPartsApplication.domain.entities.InventoryEntity;
+import com.mega.parts.MegaPartsApplication.repositories.InventoryRepository;
 import com.mega.parts.MegaPartsApplication.services.InventoryService;
 
 @Service
 public class InventoryServiceImpl implements InventoryService {
+
+	
+	
+	private InventoryRepository inventoryRepository;
+	
+	
+	
+	public InventoryServiceImpl(InventoryRepository inventoryRepository) {
+		this.inventoryRepository = inventoryRepository;
+	}
 
 	@Override
 	public InventoryEntity createInventory(InventoryEntity _inventory) {

@@ -2,6 +2,8 @@ package com.mega.parts.MegaPartsApplication.services.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import org.springframework.stereotype.Service;
 
@@ -31,8 +33,7 @@ public class ProductInformationServiceImpl implements ProductInformationService 
 	@Override
 	public List<ProductInformationEntity> findAll() {
 		// TODO Auto-generated method stub
-		return null;
-	}
+		return StreamSupport.stream(productIfoRepository.findAll().spliterator(),false).collect(Collectors.toList());	}
 
 	@Override
 	public Optional<ProductInformationEntity> findOne(String id) {

@@ -3,6 +3,8 @@ package com.mega.parts.MegaPartsApplication.services.impl;
 import java.util.List;
 
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import org.springframework.stereotype.Service;
 
@@ -33,8 +35,7 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public List<OrderEntity> findAll() {
 		// TODO Auto-generated method stub
-		return null;
-	}
+		return StreamSupport.stream(orderRepository.findAll().spliterator(),false).collect(Collectors.toList());	}
 
 	@Override
 	public Optional<OrderEntity> findOne(String id) {
