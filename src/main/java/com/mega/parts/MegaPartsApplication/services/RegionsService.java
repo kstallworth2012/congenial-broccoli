@@ -12,8 +12,8 @@ public interface RegionsService {
 	List<RegionsEntity> findAll();
 	
 
-	Optional<RegionsEntity> findOne(String id);
+	Optional<RegionsEntity> findOne(Long id);
 		 
-	boolean isExists(String id);
+	boolean isExists(Long id);
 
 }

@@ -26,7 +26,7 @@ public class EmployeesServiceImpl implements EmployeesService {
 	@Override
 	public EmployeesEntity createEmployee(EmployeesEntity _employees) {
 		// TODO Auto-generated method stub
-		return null;
+		return employeesRepository.save(_employees);
 	}
 
 	@Override
@@ -36,15 +36,15 @@ public class EmployeesServiceImpl implements EmployeesService {
 	}
 
 	@Override
-	public Optional<EmployeesEntity> findOne(String id) {
+	public Optional<EmployeesEntity> findOne(Long id) {
 		// TODO Auto-generated method stub
-		return Optional.empty();
+		return employeesRepository.findById(id);
 	}
 
 	@Override
-	public boolean isExists(String id) {
+	public boolean isExists(Long id) {
 		// TODO Auto-generated method stub
-		return false;
+		return employeesRepository.existsById(id);
 	}
 
 }

@@ -28,7 +28,7 @@ public class RegionsServiceImpl implements RegionsService {
 	@Override
 	public RegionsEntity createRegions(RegionsEntity _regions) {
 		// TODO Auto-generated method stub
-		return null;
+		return regionsRepository.save(_regions);
 	}
 
 	@Override
@@ -38,15 +38,15 @@ public class RegionsServiceImpl implements RegionsService {
 	}
 
 	@Override
-	public Optional<RegionsEntity> findOne(String id) {
+	public Optional<RegionsEntity> findOne(Long id) {
 		// TODO Auto-generated method stub
-		return Optional.empty();
+		return regionsRepository.findById(id);
 	}
 
 	@Override
-	public boolean isExists(String id) {
+	public boolean isExists(Long id) {
 		// TODO Auto-generated method stub
-		return false;
+		return regionsRepository.existsById(id);
 	}
 
 }

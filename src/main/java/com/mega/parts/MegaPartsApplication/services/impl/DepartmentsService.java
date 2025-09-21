@@ -19,7 +19,7 @@ public class DepartmentsService implements com.mega.parts.MegaPartsApplication.s
 	@Override
 	public DepartmentsEntity createDepartments(DepartmentsEntity _departments) {
 		// TODO Auto-generated method stub
-		return null;
+		return departmentsRepository.save(_departments);
 	}
 
 	@Override
@@ -29,15 +29,15 @@ public class DepartmentsService implements com.mega.parts.MegaPartsApplication.s
 	}
 
 	@Override
-	public Optional<DepartmentsEntity> findOne(String id) {
+	public Optional<DepartmentsEntity> findOne(Long id) {
 		// TODO Auto-generated method stub
-		return Optional.empty();
+		return departmentsRepository.findById(id);
 	}
 
 	@Override
-	public boolean isExists(String id) {
+	public boolean isExists(Long id) {
 		// TODO Auto-generated method stub
-		return false;
+		return departmentsRepository.existsById(id);
 	}
 
 }
