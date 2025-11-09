@@ -29,7 +29,7 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public OrderEntity createOrder(OrderEntity _order) {
 		// TODO Auto-generated method stub
-		return null;
+		return orderRepository.save(_order);
 	}
 
 	@Override
@@ -40,13 +40,13 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public Optional<OrderEntity> findOne(String id) {
 		// TODO Auto-generated method stub
-		return Optional.empty();
+		return orderRepository.findById(id);
 	}
 
 	@Override
 	public boolean isExists(String id) {
 		// TODO Auto-generated method stub
-		return false;
+		return orderRepository.existsById(id);
 	}
 
 }

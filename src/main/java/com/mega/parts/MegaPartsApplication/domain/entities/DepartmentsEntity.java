@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 public class DepartmentsEntity{
 
 @Id
-private Long department_id;
+private String department_id;
 private String department_name;
 private String manager_id;
 

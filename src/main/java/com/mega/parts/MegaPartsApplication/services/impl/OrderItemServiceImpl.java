@@ -28,7 +28,7 @@ public class OrderItemServiceImpl implements OrderItemService {
 	@Override
 	public OrderItemEntity createOrderItem(OrderItemEntity _orderItem) {
 		// TODO Auto-generated method stub
-		return null;
+		return orderItemRepository.save(_orderItem);
 	}
 
 	@Override
@@ -39,13 +39,13 @@ public class OrderItemServiceImpl implements OrderItemService {
 	@Override
 	public Optional<OrderItemEntity> findOne(String id) {
 		// TODO Auto-generated method stub
-		return Optional.empty();
+		return orderItemRepository.findById(id);
 	}
 
 	@Override
 	public boolean isExists(String id) {
 		// TODO Auto-generated method stub
-		return false;
+		return orderItemRepository.existsById(id);
 	}
 
 }

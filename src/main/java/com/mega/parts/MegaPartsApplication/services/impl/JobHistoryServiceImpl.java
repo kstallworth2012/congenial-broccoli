@@ -39,13 +39,13 @@ public class JobHistoryServiceImpl implements JobHistoryService {
 	@Override
 	public Optional<JobHistoryEntity> findOne(String id) {
 		// TODO Auto-generated method stub
-		return Optional.empty();
+		return jobHistoryRepository.findById(id);
 	}
 
 	@Override
 	public boolean isExists(String id) {
 		// TODO Auto-generated method stub
-		return false;
+		return jobHistoryRepository.existsById(id);
 	}
 
 }

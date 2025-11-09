@@ -27,7 +27,7 @@ public class JobsServiceImpl implements JobsService {
 	@Override
 	public JobsEntity createJob(JobsEntity _Jobs) {
 		// TODO Auto-generated method stub
-		return null;
+		return jobsRepository.save(_Jobs);
 	}
 
 	@Override
@@ -39,13 +39,13 @@ public class JobsServiceImpl implements JobsService {
 	@Override
 	public Optional<JobsEntity> findOne(String id) {
 		// TODO Auto-generated method stub
-		return Optional.empty();
+		return jobsRepository.findById(id);
 	}
 
 	@Override
 	public boolean isExists(String id) {
 		// TODO Auto-generated method stub
-		return false;
+		return jobsRepository.existsById(id)
 	}
 
 }

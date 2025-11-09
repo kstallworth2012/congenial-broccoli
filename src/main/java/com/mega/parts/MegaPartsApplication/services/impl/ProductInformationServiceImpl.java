@@ -27,7 +27,7 @@ public class ProductInformationServiceImpl implements ProductInformationService 
 	@Override
 	public ProductInformationEntity createProductInformation(ProductInformationEntity _ProductInformation) {
 		// TODO Auto-generated method stub
-		return null;
+		return productIfoRepository.save(_ProductInformation);
 	}
 
 	@Override
@@ -38,13 +38,13 @@ public class ProductInformationServiceImpl implements ProductInformationService 
 	@Override
 	public Optional<ProductInformationEntity> findOne(String id) {
 		// TODO Auto-generated method stub
-		return Optional.empty();
+		return productIfoRepository.findById(id);
 	}
 
 	@Override
 	public boolean isExists(String id) {
 		// TODO Auto-generated method stub
-		return false;
+		return productIfoRepository.existsById(id);
 	}
 
 }

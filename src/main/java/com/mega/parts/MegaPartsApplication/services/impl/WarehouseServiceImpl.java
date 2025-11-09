@@ -26,7 +26,7 @@ public class WarehouseServiceImpl implements WarehouseService {
 	@Override
 	public WarehouseEntity createWarehouse(WarehouseEntity _warehouse) {
 		// TODO Auto-generated method stub
-		return null;
+		return warehouseRepository.save(_warehouse);
 	}
 
 	@Override
@@ -38,13 +38,13 @@ public class WarehouseServiceImpl implements WarehouseService {
 	@Override
 	public Optional<WarehouseEntity> findOne(String id) {
 		// TODO Auto-generated method stub
-		return Optional.empty();
+		return warehouseRepository.findById(id);
 	}
 
 	@Override
 	public boolean isExists(String id) {
 		// TODO Auto-generated method stub
-		return false;
+		return warehouseRepository.existsById(id);
 	}
 
 }

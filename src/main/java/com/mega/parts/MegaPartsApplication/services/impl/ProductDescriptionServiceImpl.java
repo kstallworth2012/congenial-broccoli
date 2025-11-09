@@ -28,7 +28,7 @@ public class ProductDescriptionServiceImpl implements ProductDescriptionService 
 	@Override
 	public ProductDescriptionEntity createProductDescription(ProductDescriptionEntity _ProductDescription) {
 		// TODO Auto-generated method stub
-		return null;
+		return productDescriptionRepository.save(_ProductDescription);
 	}
 
 	@Override
@@ -39,13 +39,13 @@ public class ProductDescriptionServiceImpl implements ProductDescriptionService 
 	@Override
 	public Optional<ProductDescriptionEntity> findOne(String id) {
 		// TODO Auto-generated method stub
-		return Optional.empty();
+		return productDescriptionRepository.findById(id);
 	}
 
 	@Override
 	public boolean isExists(String id) {
 		// TODO Auto-generated method stub
-		return false;
+		return productDescriptionRepository.existsById(id);
 	}
 
 }

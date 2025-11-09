@@ -28,7 +28,7 @@ import lombok.NoArgsConstructor;
 public class InventoryEntity{
 
 	@Id
-	private Long inventory_id;
+	private String inventory_id;
 	private Integer warehouse_id;
 	private Integer product_id;
 	private Integer quantity_on_hand;

@@ -20,7 +20,7 @@ public class LocationServiceImpl implements LocationService {
 	@Override
 	public LocationEntity createLocation(LocationEntity _Location) {
 		// TODO Auto-generated method stub
-		return null;
+		return locationRepository.save(_Location);
 	}
 
 	@Override
@@ -31,13 +31,13 @@ public class LocationServiceImpl implements LocationService {
 	@Override
 	public Optional<LocationEntity> findOne(String id) {
 		// TODO Auto-generated method stub
-		return Optional.empty();
+		return locationRepository.findById(id);
 	}
 
 	@Override
 	public boolean isExists(String id) {
 		// TODO Auto-generated method stub
-		return false;
+		return locationRepository.existsById(id);
 	}
 
 }

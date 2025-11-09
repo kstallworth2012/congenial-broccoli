@@ -2,6 +2,8 @@ package com.mega.parts.MegaPartsApplication.services.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import org.springframework.stereotype.Service;
 
@@ -25,25 +27,25 @@ public class InventoryServiceImpl implements InventoryService {
 	@Override
 	public InventoryEntity createInventory(InventoryEntity _inventory) {
 		// TODO Auto-generated method stub
-		return null;
+		return inventoryRepository.save(_inventory);
 	}
 
 	@Override
 	public List<InventoryEntity> findAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return StreamSupport.stream(inventoryRepository.findAll().spliterator(),false).collect(Collectors.toList());
 	}
 
 	@Override
 	public Optional<InventoryEntity> findOne(String id) {
 		// TODO Auto-generated method stub
-		return Optional.empty();
+		return inventoryRepository.findById(id);
 	}
 
 	@Override
 	public boolean isExists(String id) {
 		// TODO Auto-generated method stub
-		return false;
+		return inventoryRepository.existsById(id);
 	}
 
 }

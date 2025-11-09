@@ -15,7 +15,7 @@ public interface EmployeesService {
 
 
 
-		 Optional<EmployeesEntity> findOne(String id);
+		 Optional<EmployeesEntity> findOne(Long id);
 		 
-		 boolean isExists(String id);
+		 boolean isExists(Long id);
 }

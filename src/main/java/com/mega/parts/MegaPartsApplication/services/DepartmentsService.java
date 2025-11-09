@@ -12,8 +12,6 @@ public interface DepartmentsService {
 		
 		List<DepartmentsEntity> findAll();
 
-
-
 		 Optional<DepartmentsEntity> findOne(String id);
 		 
 		 boolean isExists(String id);

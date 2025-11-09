@@ -29,13 +29,13 @@ public class DepartmentsService implements com.mega.parts.MegaPartsApplication.s
 	}
 
 	@Override
-	public Optional<DepartmentsEntity> findOne(Long id) {
+	public Optional<DepartmentsEntity> findOne(String id) {
 		// TODO Auto-generated method stub
 		return departmentsRepository.findById(id);
 	}
 
 	@Override
-	public boolean isExists(Long id) {
+	public boolean isExists(String id) {
 		// TODO Auto-generated method stub
 		return departmentsRepository.existsById(id);
 	}
