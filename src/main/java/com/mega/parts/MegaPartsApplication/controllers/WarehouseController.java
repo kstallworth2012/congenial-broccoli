@@ -5,7 +5,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.http.ResponseEntity;
+
+import com.mega.parts.MegaPartsApplication.domain.dto.WarehouseDTO;
 import com.mega.parts.MegaPartsApplication.domain.entities.WarehouseEntity;
+import com.mega.parts.MegaPartsApplication.mappers.Mapper;
 import com.mega.parts.MegaPartsApplication.repositories.WarehouseRepository;
 
 @RestController
@@ -13,10 +16,12 @@ import com.mega.parts.MegaPartsApplication.repositories.WarehouseRepository;
 public class WarehouseController{
 
 
-		private final WarehouseRepository warehouseRepository;
+   private final WarehouseRepository warehouseRepository;
+    private Mapper<WarehouseEntity, WarehouseDTO> warehouseMapper;
 
-    public WarehouseController(WarehouseRepository _warehouseRepository) {
+    public WarehouseController(WarehouseRepository _warehouseRepository,Mapper<WarehouseEntity, WarehouseDTO> _warehouseMapper) {
         this.warehouseRepository = _warehouseRepository;
+        this.warehouseMapper = _warehouseMapper;
     }
 
 
@@ -34,4 +39,34 @@ public class WarehouseController{
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*
+    
+    	@DeleteMapping(path="/{id}")
+	public ResponseEntity<ApplicantDto> deleteApplicant(@PathVariable("id") String id) {
+		
+		appService.delete(id);
+		
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+    
+    
+    
+    
+    */
+    
+    
 }

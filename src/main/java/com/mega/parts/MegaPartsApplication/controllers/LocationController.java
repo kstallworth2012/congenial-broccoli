@@ -5,7 +5,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.http.ResponseEntity;
+
+import com.mega.parts.MegaPartsApplication.domain.dto.LocationDTO;
 import com.mega.parts.MegaPartsApplication.domain.entities.LocationEntity;
+import com.mega.parts.MegaPartsApplication.mappers.Mapper;
 import com.mega.parts.MegaPartsApplication.repositories.LocationRepository;
 
 
@@ -14,9 +17,11 @@ import com.mega.parts.MegaPartsApplication.repositories.LocationRepository;
 public class LocationController{
 
   		private final LocationRepository locationRepository;
+  		private Mapper<LocationEntity, LocationDTO> locationMapper;
 
-    public LocationController(LocationRepository _locationRepository) {
+    public LocationController(LocationRepository _locationRepository,Mapper<LocationEntity, LocationDTO> _locationMapper) {
         this.locationRepository = _locationRepository;
+        this.locationMapper = _locationMapper;
     }
 
 
@@ -34,6 +39,21 @@ public class LocationController{
                 .orElse(ResponseEntity.notFound().build());
     }
 
-
+    
+    /*
+    
+    	@DeleteMapping(path="/{id}")
+	public ResponseEntity<ApplicantDto> deleteApplicant(@PathVariable("id") String id) {
+		
+		appService.delete(id);
+		
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+    
+    
+    
+    
+    */
+    
 
 }

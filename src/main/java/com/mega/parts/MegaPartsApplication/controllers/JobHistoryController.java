@@ -17,6 +17,7 @@ public class JobHistoryController{
 
 
 	private final JobHistoryRepository jobHistoryRepository;
+	//private Mapper<Applicant, ApplicantDto> applicantMapper;
 
     public JobHistoryController(JobHistoryRepository _jobHistoryRepository) {
         this.jobHistoryRepository = _jobHistoryRepository;
@@ -36,4 +37,25 @@ public class JobHistoryController{
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+    
+    
+    
+    
+    /*
+    
+    	@DeleteMapping(path="/{id}")
+	public ResponseEntity<ApplicantDto> deleteApplicant(@PathVariable("id") String id) {
+		
+		appService.delete(id);
+		
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+    
+    
+    
+    
+    */
+    
+    
+    
 }
