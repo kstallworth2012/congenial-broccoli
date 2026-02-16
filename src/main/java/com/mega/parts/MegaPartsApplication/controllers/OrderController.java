@@ -2,8 +2,11 @@ package com.mega.parts.MegaPartsApplication.controllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -36,15 +39,15 @@ public class OrderController{
     }
 
     
-/*
+
  //PAGEABLE
 	@GetMapping(path="/")
-	public Page<ActivitiesDTO> listActivities(Pageable page){
-		Page<ActivitiesEntity> activities = activitiesService.findAll(page);
-		return activities.map(activitiesMapper::mapTo);
+	public Page<OrderDTO> listOrders(Pageable page){
+		Page<OrderEntity> orders = orderService.findAll(page);
+		return orders.map(orderMapper::mapTo);
 	}
 	  
-
+/*
 
 	     @GetMapping(path = "/{activity_id}")
 	     public ResponseEntity<ActivitiesDTO> getActivity(@PathVariable("activity_id") Long id){
@@ -74,24 +77,24 @@ public class OrderController{
 //                .orElse(ResponseEntity.notFound().build());
 //    }
 //    
-    /*
+    
 
-    @PostMapping(path = "/new-activity")
-public ResponseEntity<ActivitiesDTO> createActivity(@RequestBody ActivitiesDTO _activitiesDTO){
+    @PostMapping(path = "/new-order")
+    public ResponseEntity<OrderDTO> createOrder(@RequestBody OrderDTO _orderDTO){
      
-			ActivitiesEntity activityEntity = activitiesMapper.mapFrom(_activitiesDTO);
-	     	ActivitiesEntity savedActivityEntity = activitiesService.createActivity(activityEntity);
-	     	return new ResponseEntity<>(activitiesMapper.mapTo(savedActivityEntity), HttpStatus.CREATED);
+			OrderEntity orderEntity = orderMapper.mapFrom(_orderDTO);
+	     	OrderEntity savedOrderEntity = orderService.createOrder(orderEntity);
+	     	return new ResponseEntity<>(orderMapper.mapTo(savedOrderEntity), HttpStatus.CREATED);
 }
 
-*/
+
     
-    /*
     
-    	@DeleteMapping(path="/{id}")
-	public ResponseEntity<ApplicantDto> deleteApplicant(@PathVariable("id") String id) {
+    
+    @DeleteMapping(path="/{id}")
+	public ResponseEntity<OrderDTO> deleteApplicant(@PathVariable("id") String id) {
 		
-		appService.delete(id);
+		orderService.delete(id);
 		
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
@@ -99,6 +102,6 @@ public ResponseEntity<ActivitiesDTO> createActivity(@RequestBody ActivitiesDTO _
     
     
     
-    */
+    
     
 }

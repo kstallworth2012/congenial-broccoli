@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
@@ -52,19 +53,19 @@ public class RegionController{
    		return regions.map(regionMapper::mapTo);
    	}
    	  
-  /*
+  
 
-   	     @GetMapping(path = "/{activity_id}")
-   	     public ResponseEntity<ActivitiesDTO> getActivity(@PathVariable("activity_id") Long id){
-   	    	 Optional<ActivitiesEntity> foundActivity = activitiesService.findOne(id);
-   	    	 return foundActivity.map(ActivitiesEntity ->{
-   	    		 ActivitiesDTO activitiesDTO = activitiesMapper.mapTo(ActivitiesEntity);
-   	    		 return new ResponseEntity<>(activitiesDTO, HttpStatus.OK);
+   	     @GetMapping(path = "/{region_id}")
+   	     public ResponseEntity<RegionsDTO> getRegion(@PathVariable("region_id") Long id){
+   	    	 Optional<RegionsEntity> foundRegion = regionService.findOne(id);
+   	    	 return foundRegion.map(RegionEntity ->{
+   	    		 RegionsDTO regionsDTO = regionMapper.mapTo(RegionEntity);
+   	    		 return new ResponseEntity<>(regionsDTO, HttpStatus.OK);
    	    	 
    	    	 }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
    	     }
 
-   */
+   
 
 
     // Read One
