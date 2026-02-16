@@ -74,7 +74,17 @@ public class OrderController{
 //                .orElse(ResponseEntity.notFound().build());
 //    }
 //    
-    
+    /*
+
+    @PostMapping(path = "/new-activity")
+public ResponseEntity<ActivitiesDTO> createActivity(@RequestBody ActivitiesDTO _activitiesDTO){
+     
+			ActivitiesEntity activityEntity = activitiesMapper.mapFrom(_activitiesDTO);
+	     	ActivitiesEntity savedActivityEntity = activitiesService.createActivity(activityEntity);
+	     	return new ResponseEntity<>(activitiesMapper.mapTo(savedActivityEntity), HttpStatus.CREATED);
+}
+
+*/
     
     /*
     

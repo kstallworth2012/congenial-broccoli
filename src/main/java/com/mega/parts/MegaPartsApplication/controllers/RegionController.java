@@ -2,12 +2,18 @@ package com.mega.parts.MegaPartsApplication.controllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.mega.parts.MegaPartsApplication.domain.dto.RegionsDTO;
@@ -38,15 +44,15 @@ public class RegionController{
     }
     
     
-    /*
+  
     //PAGEABLE
    	@GetMapping(path="/")
-   	public Page<ActivitiesDTO> listActivities(Pageable page){
-   		Page<ActivitiesEntity> activities = activitiesService.findAll(page);
-   		return activities.map(activitiesMapper::mapTo);
+   	public Page<RegionsDTO> listRegions(Pageable page){
+   		Page<RegionsEntity> regions = regionService.findAll(page);
+   		return regions.map(regionMapper::mapTo);
    	}
    	  
-
+  /*
 
    	     @GetMapping(path = "/{activity_id}")
    	     public ResponseEntity<ActivitiesDTO> getActivity(@PathVariable("activity_id") Long id){
@@ -62,20 +68,31 @@ public class RegionController{
 
 
     // Read One
-    @GetMapping("/{id}")
-    public ResponseEntity<RegionsEntity> getRegionRepositoryById(@PathVariable Long id) {
-        return regionRepository.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
+//    @GetMapping("/{id}")
+//    public ResponseEntity<RegionsEntity> getRegionRepositoryById(@PathVariable Long id) {
+//        return regionRepository.findById(id)
+//                .map(ResponseEntity::ok)
+//                .orElse(ResponseEntity.notFound().build());
+//    }
+//    
+//    
+
+    @PostMapping(path = "/new-region")
+    public ResponseEntity<RegionsDTO> createRegion(@RequestBody RegionsDTO _regionDTO){
+     
+			RegionsEntity warehouseEntity = regionMapper.mapFrom(_regionDTO);
+	     	RegionsEntity savedWarehouseEntity = regionService.createRegion(warehouseEntity);
+	     	return new ResponseEntity<>(regionMapper.mapTo(savedWarehouseEntity), HttpStatus.CREATED);
+}
+
+
     
     
-    /*
     
-    	@DeleteMapping(path="/{id}")
-	public ResponseEntity<ApplicantDto> deleteApplicant(@PathVariable("id") String id) {
+    @DeleteMapping(path="/{id}")
+	public ResponseEntity<RegionsDTO> deleteRegion(@PathVariable("id") String id) {
 		
-		appService.delete(id);
+		regionService.delete(id);
 		
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
@@ -83,7 +100,7 @@ public class RegionController{
     
     
     
-    */
+    
     
 
 }

@@ -15,7 +15,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import com.example.workflow.workmanagementapp.domain.dto.ActivitiesDTO;
+import com.example.workflow.workmanagementapp.domain.entities.ActivitiesEntity;
 import com.mega.parts.MegaPartsApplication.domain.dto.CountriesDTO;
 import com.mega.parts.MegaPartsApplication.domain.entities.CountriesEntity;
 import com.mega.parts.MegaPartsApplication.mappers.Mapper;
@@ -68,13 +72,19 @@ public class CountriesController{
    
 
 
-    
+    	 @PostMapping(path = "/new-country")
+	     public ResponseEntity<CountriesDTO> createCountry(@RequestBody CountriesDTO _countriesDTO){
+	          
+	     			CountriesEntity countryEntity = countriesMapper.mapFrom(_countriesDTO);
+	     	     	CountriesEntity savedCountryEntity = countriesService.createCountry(countryEntity);
+	     	     	return new ResponseEntity<>(countriesMapper.mapTo(savedCountryEntity), HttpStatus.CREATED);
+	     }
   
     
     
     
     
-    
+   
     @DeleteMapping(path="/{id}")
 	public ResponseEntity<CountriesDTO> deleteApplicant(@PathVariable("id") String id) {
 		

@@ -2,14 +2,19 @@ package com.mega.parts.MegaPartsApplication.controllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.mega.parts.MegaPartsApplication.domain.dto.WarehouseDTO;
@@ -46,33 +51,41 @@ public class WarehouseController{
    		Page<WarehouseEntity> warehouses = warehouseService.findAll(page);
    		return warehouses.map(warehouseMapper::mapTo);
    	}
-   	 /* 
+   	  
 
-
-   	     @GetMapping(path = "/{activity_id}")
-   	     public ResponseEntity<ActivitiesDTO> getActivity(@PathVariable("activity_id") Long id){
-   	    	 Optional<ActivitiesEntity> foundActivity = activitiesService.findOne(id);
-   	    	 return foundActivity.map(ActivitiesEntity ->{
-   	    		 ActivitiesDTO activitiesDTO = activitiesMapper.mapTo(ActivitiesEntity);
-   	    		 return new ResponseEntity<>(activitiesDTO, HttpStatus.OK);
+ // Read One
+    @GetMapping(path = "/{warehouse_id}")
+   	public ResponseEntity<WarehouseDTO> getWarehouseById(@PathVariable("warehouse_id") Long id){
+   	    	 Optional<WarehouseEntity> foundWarehouse = warehouseService.findOne(id);
+   	    	 return foundWarehouse.map(WarehouseEntity ->{
+   	    		 WarehouseDTO warehouseDTO = warehouseMapper.mapTo(WarehouseEntity);
+   	    		 return new ResponseEntity<>(warehouseDTO, HttpStatus.OK);
    	    	 
    	    	 }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
    	     }
 
-   */
+  
  
     
     
     
     
     
-    // Read One
-    @GetMapping("/{id}")
-    public ResponseEntity<WarehouseEntity> getWarehouseById(@PathVariable Long id) {
-        return warehouseRepository.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
+
+    
+    
+    
+    
+   
+
+@PostMapping(path = "/new-warehouse")
+public ResponseEntity<WarehouseDTO> createWarehouse(@RequestBody WarehouseDTO _warehouseDTO){
+     
+			WarehouseEntity warehouseEntity = warehouseMapper.mapFrom(_warehouseDTO);
+	     	WarehouseEntity savedWarehouseEntity = warehouseService.createActivity(warehouseEntity);
+	     	return new ResponseEntity<>(warehouseMapper.mapTo(savedWarehouseEntity), HttpStatus.CREATED);
+}
+
 
     
     
@@ -85,15 +98,10 @@ public class WarehouseController{
     
     
     
-    
-    
-    
-    /*
-    
-    	@DeleteMapping(path="/{id}")
-	public ResponseEntity<ApplicantDto> deleteApplicant(@PathVariable("id") String id) {
+    @DeleteMapping(path="/{id}")
+	public ResponseEntity<WarehouseDTO> deleteWarehouse(@PathVariable("id") String id) {
 		
-		appService.delete(id);
+		warehouseService.delete(id);
 		
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
@@ -101,7 +109,7 @@ public class WarehouseController{
     
     
     
-    */
+    
     
     
 }

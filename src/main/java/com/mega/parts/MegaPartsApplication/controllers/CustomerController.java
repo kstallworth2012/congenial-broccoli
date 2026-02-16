@@ -14,7 +14,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import com.example.workflow.workmanagementapp.domain.dto.ActivitiesDTO;
+import com.example.workflow.workmanagementapp.domain.entities.ActivitiesEntity;
 import com.mega.parts.MegaPartsApplication.domain.dto.CustomerDTO;
 import com.mega.parts.MegaPartsApplication.domain.entities.CustomerEntity;
 import com.mega.parts.MegaPartsApplication.mappers.Mapper;
@@ -68,11 +72,17 @@ public class CustomerController{
     
     
     
+/*
 
-
+    	     @PostMapping(path = "/new-activity")
+	     public ResponseEntity<ActivitiesDTO> createActivity(@RequestBody ActivitiesDTO _activitiesDTO){
+	          
+	     			ActivitiesEntity activityEntity = activitiesMapper.mapFrom(_activitiesDTO);
+	     	     	ActivitiesEntity savedActivityEntity = activitiesService.createActivity(activityEntity);
+	     	     	return new ResponseEntity<>(activitiesMapper.mapTo(savedActivityEntity), HttpStatus.CREATED);
+	     }
     
-    
-    
+    */
     @DeleteMapping(path="/{id}")
 	public ResponseEntity<CustomerDTO> deleteCustomer(@PathVariable("id") String id) {
 		
