@@ -10,6 +10,8 @@ import com.mega.parts.MegaPartsApplication.domain.dto.OrderItemDTO;
 import com.mega.parts.MegaPartsApplication.domain.entities.OrderItemEntity;
 import com.mega.parts.MegaPartsApplication.mappers.Mapper;
 import com.mega.parts.MegaPartsApplication.repositories.OrderItemRepository;
+import com.mega.parts.MegaPartsApplication.services.OrderItemService;
+
 import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
@@ -17,11 +19,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class OrderItemController{
 
 
-	private final OrderItemRepository orderItemRepository;
+	private final OrderItemService orderItemService;
 	private Mapper<OrderItemEntity, OrderItemDTO> orderItemMapper;
 
-    public OrderItemController(OrderItemRepository _orderItemRepository,Mapper<OrderItemEntity, OrderItemDTO> _orderItemMapper) {
-        this.orderItemRepository = _orderItemRepository;
+    public OrderItemController(OrderItemService _orderItemService,Mapper<OrderItemEntity, OrderItemDTO> _orderItemMapper) {
+        this.orderItemService = _orderItemService;
         this.orderItemMapper = _orderItemMapper;
     }
 

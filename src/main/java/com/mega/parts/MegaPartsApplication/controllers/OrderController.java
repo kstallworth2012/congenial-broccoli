@@ -10,23 +10,33 @@ import com.mega.parts.MegaPartsApplication.domain.dto.OrderDTO;
 import com.mega.parts.MegaPartsApplication.domain.entities.OrderEntity;
 import com.mega.parts.MegaPartsApplication.mappers.Mapper;
 import com.mega.parts.MegaPartsApplication.repositories.OrderRepository;
+import com.mega.parts.MegaPartsApplication.services.OrderService;
 
 @RestController
 @RequestMapping("/api/orders")
 public class OrderController{
 
 
-	private final OrderRepository orderRepository;
+	private final OrderService orderService;
 	private Mapper<OrderEntity, OrderDTO> orderMapper;
 
-    public OrderController(OrderRepository _orderRepository,Mapper<OrderEntity, OrderDTO> _orderMapper) {
-        this.orderRepository = _orderRepository;
+    public OrderController(OrderService _orderService,Mapper<OrderEntity, OrderDTO> _orderMapper) {
+        this.orderService = _orderService;
         this.orderMapper = _orderMapper;
     }
 
+    
+    /*
+ 	 @GetMapping(path = "/")
+public List<ActivitiesDTO> listActivities(){
+	 List<ActivitiesEntity> activities = activitiesService.findAll();
+	 return activities.stream().map(activitiesMapper::mapTo).collect(Collectors.toList());
+			 }
+*/
+
 
 //    // Read All
-//    @GetMapping
+//    @GetMapping(path="/")
 //    public Iterable<OrderEntity> getAllOrders() {
 //        return OrderRepository.findAll();
 //    }

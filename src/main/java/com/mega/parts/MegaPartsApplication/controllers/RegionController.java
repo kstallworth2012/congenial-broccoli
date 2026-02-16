@@ -10,17 +10,18 @@ import com.mega.parts.MegaPartsApplication.domain.dto.RegionsDTO;
 import com.mega.parts.MegaPartsApplication.domain.entities.RegionsEntity;
 import com.mega.parts.MegaPartsApplication.mappers.Mapper;
 import com.mega.parts.MegaPartsApplication.repositories.RegionsRepository;
+import com.mega.parts.MegaPartsApplication.services.RegionsService;
 
 @RestController
 @RequestMapping("/api/regions")
 public class RegionController{
 
 
-	private final RegionsRepository regionRepository;
+	private final RegionsService regionService;
 	private Mapper<RegionsEntity, RegionsDTO> regionMapper;
 
-    public RegionController(RegionsRepository _regionRepository, Mapper<RegionsEntity, RegionsDTO> _regionMapper) {
-        this.regionRepository = _regionRepository;
+    public RegionController(RegionsService _regionService, Mapper<RegionsEntity, RegionsDTO> _regionMapper) {
+        this.regionService = _regionService;
         this.regionMapper = _regionMapper;
     }
 

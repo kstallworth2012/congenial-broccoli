@@ -10,17 +10,18 @@ import com.mega.parts.MegaPartsApplication.domain.dto.DepartmentsDTO;
 import com.mega.parts.MegaPartsApplication.domain.entities.DepartmentsEntity;
 import com.mega.parts.MegaPartsApplication.mappers.Mapper;
 import com.mega.parts.MegaPartsApplication.repositories.DepartmentsRepository;
+import com.mega.parts.MegaPartsApplication.services.DepartmentsService;
 
 @RestController
 @RequestMapping("/api/departments")
 public class DepartmentsController{
 
 
-	private final DepartmentsRepository departmentsRepository;
+	private final DepartmentsService departmentService;
 	private Mapper<DepartmentsEntity, DepartmentsDTO> departmentMapper;
 
-    public DepartmentsController(DepartmentsRepository _departmentsRepository, Mapper<DepartmentsEntity, DepartmentsDTO> _departmentMapper) {
-        this.departmentsRepository = _departmentsRepository;
+    public DepartmentsController( DepartmentsService _departmentService, Mapper<DepartmentsEntity, DepartmentsDTO> _departmentMapper) {
+        this.departmentService =  _departmentService;
         this.departmentMapper = _departmentMapper;
     }
 

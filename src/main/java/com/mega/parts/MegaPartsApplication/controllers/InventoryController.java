@@ -10,17 +10,18 @@ import com.mega.parts.MegaPartsApplication.domain.dto.InventoryDTO;
 import com.mega.parts.MegaPartsApplication.domain.entities.InventoryEntity;
 import com.mega.parts.MegaPartsApplication.mappers.Mapper;
 import com.mega.parts.MegaPartsApplication.repositories.InventoryRepository;
+import com.mega.parts.MegaPartsApplication.services.InventoryService;
 
 
 @RestController
 @RequestMapping("/api/inventory")
 public class InventoryController{
 
-	private final InventoryRepository inventoryRepository;
+	private final InventoryService inventoryService;
 	private Mapper<InventoryEntity, InventoryDTO> inventoryMapper;
 
-    public InventoryController(InventoryRepository _inventoryRepository,Mapper<InventoryEntity, InventoryDTO> _inventoryMapper) {
-        this.inventoryRepository = _inventoryRepository;
+    public InventoryController(InventoryService _inventoryService,Mapper<InventoryEntity, InventoryDTO> _inventoryMapper) {
+        this.inventoryService = _inventoryService;
         this.inventoryMapper = _inventoryMapper;
     }
 

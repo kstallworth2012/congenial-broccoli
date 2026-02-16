@@ -10,17 +10,18 @@ import com.mega.parts.MegaPartsApplication.domain.dto.LocationDTO;
 import com.mega.parts.MegaPartsApplication.domain.entities.LocationEntity;
 import com.mega.parts.MegaPartsApplication.mappers.Mapper;
 import com.mega.parts.MegaPartsApplication.repositories.LocationRepository;
+import com.mega.parts.MegaPartsApplication.services.LocationService;
 
 
 @RestController
 @RequestMapping("/api/locations")
 public class LocationController{
 
-  		private final LocationRepository locationRepository;
+  		private final LocationService locationService;
   		private Mapper<LocationEntity, LocationDTO> locationMapper;
 
-    public LocationController(LocationRepository _locationRepository,Mapper<LocationEntity, LocationDTO> _locationMapper) {
-        this.locationRepository = _locationRepository;
+    public LocationController(LocationService _locationService,Mapper<LocationEntity, LocationDTO> _locationMapper) {
+        this.locationService = _locationService;
         this.locationMapper = _locationMapper;
     }
 

@@ -10,17 +10,18 @@ import com.mega.parts.MegaPartsApplication.domain.dto.WarehouseDTO;
 import com.mega.parts.MegaPartsApplication.domain.entities.WarehouseEntity;
 import com.mega.parts.MegaPartsApplication.mappers.Mapper;
 import com.mega.parts.MegaPartsApplication.repositories.WarehouseRepository;
+import com.mega.parts.MegaPartsApplication.services.WarehouseService;
 
 @RestController
 @RequestMapping("/api/warehouse")
 public class WarehouseController{
 
 
-   private final WarehouseRepository warehouseRepository;
+   private final WarehouseService warehouseService;
     private Mapper<WarehouseEntity, WarehouseDTO> warehouseMapper;
 
-    public WarehouseController(WarehouseRepository _warehouseRepository,Mapper<WarehouseEntity, WarehouseDTO> _warehouseMapper) {
-        this.warehouseRepository = _warehouseRepository;
+    public WarehouseController(WarehouseService _warehouseService,Mapper<WarehouseEntity, WarehouseDTO> _warehouseMapper) {
+        this.warehouseService = _warehouseService;
         this.warehouseMapper = _warehouseMapper;
     }
 

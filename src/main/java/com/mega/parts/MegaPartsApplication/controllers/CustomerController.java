@@ -13,17 +13,18 @@ import com.mega.parts.MegaPartsApplication.domain.dto.CustomerDTO;
 import com.mega.parts.MegaPartsApplication.domain.entities.CustomerEntity;
 import com.mega.parts.MegaPartsApplication.mappers.Mapper;
 import com.mega.parts.MegaPartsApplication.repositories.CustomerRepository;
+import com.mega.parts.MegaPartsApplication.services.CustomerService;
 
 
 @RestController
 @RequestMapping("/api/customers")
 public class CustomerController{
 
-	private final CustomerRepository customerRepository;
+	private CustomerService customerService;
 	private Mapper<CustomerEntity, CustomerDTO> customerMapper;
 
-    public CustomerController(CustomerRepository _customerRepository,Mapper<CustomerEntity, CustomerDto> _customerMapper) {
-        this.customerRepository = _customerRepository;
+    public CustomerController(CustomerService _customerService,Mapper<CustomerEntity, CustomerDto> _customerMapper) {
+        this.customerService = _customerService;
         this.customerMapper = _customerMapper;
     }
 
