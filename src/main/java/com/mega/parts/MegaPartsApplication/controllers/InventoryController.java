@@ -3,6 +3,12 @@ package com.mega.parts.MegaPartsApplication.controllers;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -27,11 +33,44 @@ public class InventoryController{
 
 
     // Read All
-    @GetMapping
-    public Iterable<InventoryEntity> getAllInventory() {
-        return inventoryRepository.findAll();
+    @GetMapping(path="/")
+    public List<InventoryDTO> getAllInventory() {
+    	List<InventoryEntity> inventories = inventoryService.findAll();
+    	return inventories.stream().map(inventoryMapper::mapTo).collect(Collectors.toList());
     }
 
+    
+    
+    
+    
+   
+    //PAGEABLE
+   	@GetMapping(path="/")
+   	public Page<InventoryDTO> listInventories(Pageable page){
+   		Page<InventoryEntity> inventories = inventoryService.findAll(page);
+   		return inventories.map(inventoryMapper::mapTo);
+   	}
+   	  
+ /*
+
+   	     @GetMapping(path = "/{activity_id}")
+   	     public ResponseEntity<ActivitiesDTO> getActivity(@PathVariable("activity_id") Long id){
+   	    	 Optional<ActivitiesEntity> foundActivity = activitiesService.findOne(id);
+   	    	 return foundActivity.map(ActivitiesEntity ->{
+   	    		 ActivitiesDTO activitiesDTO = activitiesMapper.mapTo(ActivitiesEntity);
+   	    		 return new ResponseEntity<>(activitiesDTO, HttpStatus.OK);
+   	    	 
+   	    	 }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+   	     }
+
+   */
+
+    
+    
+    
+    
+    
+    
     // Read One
     @GetMapping("/{id}")
     public ResponseEntity<InventoryEntity> getInventoryById(@PathVariable Long id) {

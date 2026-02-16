@@ -4,8 +4,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import com.example.workflow.workmanagementapp.domain.dto.ActivitiesDTO;
+import com.example.workflow.workmanagementapp.domain.entities.ActivitiesEntity;
 import com.mega.parts.MegaPartsApplication.domain.dto.OrderDTO;
 import com.mega.parts.MegaPartsApplication.domain.entities.OrderEntity;
 import com.mega.parts.MegaPartsApplication.mappers.Mapper;
@@ -26,20 +36,35 @@ public class OrderController{
     }
 
     
-    /*
- 	 @GetMapping(path = "/")
-public List<ActivitiesDTO> listActivities(){
-	 List<ActivitiesEntity> activities = activitiesService.findAll();
-	 return activities.stream().map(activitiesMapper::mapTo).collect(Collectors.toList());
-			 }
+/*
+ //PAGEABLE
+	@GetMapping(path="/")
+	public Page<ActivitiesDTO> listActivities(Pageable page){
+		Page<ActivitiesEntity> activities = activitiesService.findAll(page);
+		return activities.map(activitiesMapper::mapTo);
+	}
+	  
+
+
+	     @GetMapping(path = "/{activity_id}")
+	     public ResponseEntity<ActivitiesDTO> getActivity(@PathVariable("activity_id") Long id){
+	    	 Optional<ActivitiesEntity> foundActivity = activitiesService.findOne(id);
+	    	 return foundActivity.map(ActivitiesEntity ->{
+	    		 ActivitiesDTO activitiesDTO = activitiesMapper.mapTo(ActivitiesEntity);
+	    		 return new ResponseEntity<>(activitiesDTO, HttpStatus.OK);
+	    	 
+	    	 }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+	     }
+
 */
 
 
 //    // Read All
-//    @GetMapping(path="/")
-//    public Iterable<OrderEntity> getAllOrders() {
-//        return OrderRepository.findAll();
-//    }
+    @GetMapping(path="/")
+    public List<OrderDTO> getAllOrders() {
+       	 List<OrderEntity> orders = orderService.findAll();
+	 return orders.stream().map(orderMapper::mapTo).collect(Collectors.toList());
+    }
 //
 //    // Read One
 //    @GetMapping("/{id}")

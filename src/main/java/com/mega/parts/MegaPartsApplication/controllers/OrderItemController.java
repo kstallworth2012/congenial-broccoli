@@ -4,6 +4,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.http.ResponseEntity;
 
 import com.mega.parts.MegaPartsApplication.domain.dto.OrderItemDTO;
@@ -29,10 +32,46 @@ public class OrderItemController{
 
 
     // Read All
-    @GetMapping
-    public Iterable<OrderItemEntity> getAllOrderItems() {
-        return orderItemRepository.findAll();
+    @GetMapping(path="/")
+    public List<OrderItemDTO> getAllOrderItems() {
+    	List<OrderItemEntity> orderItems = orderItemService.findAll();
+        return orderItems.stream().map(orderItemMapper::mapTo).collect(Collectors.toList());
     }
+    
+    
+    /*
+    //PAGEABLE
+   	@GetMapping(path="/")
+   	public Page<ActivitiesDTO> listActivities(Pageable page){
+   		Page<ActivitiesEntity> activities = activitiesService.findAll(page);
+   		return activities.map(activitiesMapper::mapTo);
+   	}
+   	  
+
+
+   	     @GetMapping(path = "/{activity_id}")
+   	     public ResponseEntity<ActivitiesDTO> getActivity(@PathVariable("activity_id") Long id){
+   	    	 Optional<ActivitiesEntity> foundActivity = activitiesService.findOne(id);
+   	    	 return foundActivity.map(ActivitiesEntity ->{
+   	    		 ActivitiesDTO activitiesDTO = activitiesMapper.mapTo(ActivitiesEntity);
+   	    		 return new ResponseEntity<>(activitiesDTO, HttpStatus.OK);
+   	    	 
+   	    	 }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+   	     }
+
+   */
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     // Read One
     @GetMapping("/{id}")

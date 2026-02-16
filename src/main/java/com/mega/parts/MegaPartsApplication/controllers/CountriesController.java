@@ -4,6 +4,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,18 +38,38 @@ public class CountriesController{
 
 
     // Read All
-    @GetMapping
-    public Iterable<CountriesEntity> getAllCountries() {
-        return countriesRepository.findAll();
+    @GetMapping(path="/")
+    public List<CountriesDTO> getAllCountries() {
+    	List<CountriesEntity> countries = countriesService.findAll();
+        return countries.stream().map(countriesMapper::mapTo).collect(Collectors.toList());
     }
+    
+    
+    
+    //PAGEABLE
+   	@GetMapping(path="/")
+   	public Page<CountriesDTO> listActivities(Pageable page){
+   		Page<CountriesEntity> countries = countriesService.findAll(page);
+   		return countries.map(countriesMapper::mapTo);
+   	}
+   	  
 
-    // Read One
-    @GetMapping("/{id}")
-    public ResponseEntity<CountriesEntity> getCountriesRepositoryById(@PathVariable Long id) {
-        return countriesRepository.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
+   		 // Read One
+   	     @GetMapping(path = "/{country_id}")
+   	     public ResponseEntity<CountriesDTO> getCountry(@PathVariable("country_id") Long id){
+   	    	 Optional<CountriesEntity> foundCountry = countriesService.findOne(id);
+   	    	 return foundCountry.map(CountriesEntity ->{
+   	    		 CountriesDTO countryDTO = countriesMapper.mapTo(CountriesEntity);
+   	    		 return new ResponseEntity<>(countryDTO, HttpStatus.OK);
+   	    	 
+   	    	 }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+   	     }
+
+   
+
+
+    
+  
     
     
     

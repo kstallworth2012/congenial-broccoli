@@ -6,8 +6,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.example.workflow.workmanagementapp.domain.dto.ActivitiesDTO;
@@ -32,7 +36,6 @@ public class JobsController{
     }
 
     
-    
   
     // Read All
     @GetMapping(path="/")
@@ -41,6 +44,40 @@ public class JobsController{
     	List<JobsEntity> jobs = jobsService.findAll();
         return jobs.stream().map(jobsMapper::mapTo).collect(Collectors.toList());
     }
+    
+    
+    
+ 
+   	 //PAGEABLE
+	@GetMapping(path="/")
+	public Page<JobDTO> listJobs(Pageable page){
+		Page<JobsEntity> jobs = jobsService.findAll(page);
+		return jobs.map(jobsMapper::mapTo);
+	}
+	 /*
+	
+	
+		 @GetMapping(path = "/{job_id}")
+	     public ResponseEntity<JobDTO> getActivity(@PathVariable("activity_id") Long id){
+	    	 Optional<ActivitiesEntity> foundActivity = activitiesService.findOne(id);
+	    	 return foundActivity.map(ActivitiesEntity ->{
+	    		 ActivitiesDTO activitiesDTO = activitiesMapper.mapTo(ActivitiesEntity);
+	    		 return new ResponseEntity<>(activitiesDTO, HttpStatus.OK);
+	    	 
+	    	 }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+	     }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+   */
 
     // Read One
     @GetMapping("/{id}")
