@@ -5,10 +5,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -47,19 +49,19 @@ public class DepartmentsController{
    		return departments.map(departmentMapper::mapTo);
    	}
    	  
-    /*
+    
 
-   	     @GetMapping(path = "/{activity_id}")
-   	     public ResponseEntity<ActivitiesDTO> getActivity(@PathVariable("activity_id") Long id){
-   	    	 Optional<ActivitiesEntity> foundActivity = activitiesService.findOne(id);
-   	    	 return foundActivity.map(ActivitiesEntity ->{
-   	    		 ActivitiesDTO activitiesDTO = activitiesMapper.mapTo(ActivitiesEntity);
-   	    		 return new ResponseEntity<>(activitiesDTO, HttpStatus.OK);
-   	    	 
-   	    	 }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-   	     }
+//   	     @GetMapping(path = "/{department_id}")
+//   	     public ResponseEntity<DepartmentsDTO> getDepartment(@PathVariable("department_id") Long id){
+//   	    	 Optional<DepartmentsEntity> foundDepartment= departmentService.findOne(id);
+//   	    	 return foundDepartment.map(DepartmentsEntity ->{
+//   	    		 DepartmentsDTO departmentsDTO = departmentMapper.mapTo(DepartmentsEntity);
+//   	    		 return new ResponseEntity<>(DepartmentsDTO, HttpStatus.OK);
+//   	    	 
+//   	    	 }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+//   	     }
 
-   */
+   
 
     
     

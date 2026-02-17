@@ -2,15 +2,19 @@ package com.mega.parts.MegaPartsApplication.controllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.mega.parts.MegaPartsApplication.domain.dto.InventoryDTO;
 import com.mega.parts.MegaPartsApplication.domain.entities.InventoryEntity;
@@ -51,32 +55,32 @@ public class InventoryController{
    		return inventories.map(inventoryMapper::mapTo);
    	}
    	  
- /*
+ 
 
-   	     @GetMapping(path = "/{activity_id}")
-   	     public ResponseEntity<ActivitiesDTO> getActivity(@PathVariable("activity_id") Long id){
-   	    	 Optional<ActivitiesEntity> foundActivity = activitiesService.findOne(id);
-   	    	 return foundActivity.map(ActivitiesEntity ->{
-   	    		 ActivitiesDTO activitiesDTO = activitiesMapper.mapTo(ActivitiesEntity);
-   	    		 return new ResponseEntity<>(activitiesDTO, HttpStatus.OK);
+   	     @GetMapping(path = "/{inventory_id}")
+   	     public ResponseEntity<InventoryDTO> getInventory(@PathVariable("inventoryy_id") Long id){
+   	    	 Optional<InventoryEntity> foundInventory = inventoryService.findOne(id);
+   	    	 return foundInventory.map(InventoryEntity ->{
+   	    		 InventoryDTO inventoryDTO = inventoryMapper.mapTo(InventoryEntity);
+   	    		 return new ResponseEntity<>(inventoryDTO, HttpStatus.OK);
    	    	 
    	    	 }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
    	     }
 
-   */
+   
 
     
-   	/*
+   	
 
     @PostMapping(path = "/new-activity")
-public ResponseEntity<ActivitiesDTO> createActivity(@RequestBody ActivitiesDTO _activitiesDTO){
+public ResponseEntity<InventoryDTO> createInventory(@RequestBody InventoryDTO _inventoryDTO){
      
-			ActivitiesEntity activityEntity = activitiesMapper.mapFrom(_activitiesDTO);
-	     	ActivitiesEntity savedActivityEntity = activitiesService.createActivity(activityEntity);
-	     	return new ResponseEntity<>(activitiesMapper.mapTo(savedActivityEntity), HttpStatus.CREATED);
+			InventoryEntity inventoryEntity = inventoryMapper.mapFrom(_inventoryDTO);
+	     	InventoryEntity savedInventoryEntity = inventoryService.createInventory(inventoryEntity);
+	     	return new ResponseEntity<>(inventoryMapper.mapTo(savedInventoryEntity), HttpStatus.CREATED);
 }
 
-*/
+
     
     
     
@@ -91,12 +95,12 @@ public ResponseEntity<ActivitiesDTO> createActivity(@RequestBody ActivitiesDTO _
     
     
     
-    /*
     
-    	@DeleteMapping(path="/{id}")
-	public ResponseEntity<ApplicantDto> deleteApplicant(@PathVariable("id") String id) {
+    
+    @DeleteMapping(path="/{id}")
+	public ResponseEntity<InventoryDTO> deleteInventory(@PathVariable("id") String id) {
 		
-		appService.delete(id);
+		inventoryService.delete(id);
 		
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
@@ -104,7 +108,7 @@ public ResponseEntity<ActivitiesDTO> createActivity(@RequestBody ActivitiesDTO _
     
     
     
-    */
+    
     
 
 }

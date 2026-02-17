@@ -2,8 +2,16 @@ package com.mega.parts.MegaPartsApplication.controllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.mega.parts.MegaPartsApplication.domain.dto.LocationDTO;
@@ -28,8 +36,10 @@ public class LocationController{
 
     // Read All
     @GetMapping
-    public Iterable<LocationEntity> getAllLocations() {
-        return locationRepository.findAll();
+    public List<LocationDTO> getAllLocations() {
+    	List<LocationEntity> locations = locationService.findAll();
+    	
+        return locations.stream().map(locationMapper::mapTo).collection(Collectors.toList());
     }
 
     // Read One
@@ -42,25 +52,25 @@ public class LocationController{
 
     
     
-    /*
+    
 
-    @PostMapping(path = "/new-activity")
-public ResponseEntity<ActivitiesDTO> createActivity(@RequestBody ActivitiesDTO _activitiesDTO){
+    @PostMapping(path = "/new-location")
+    public ResponseEntity<LocationDTO> createLocation(@RequestBody LocationDTO _locationDTO){
      
-			ActivitiesEntity activityEntity = activitiesMapper.mapFrom(_activitiesDTO);
-	     	ActivitiesEntity savedActivityEntity = activitiesService.createActivity(activityEntity);
-	     	return new ResponseEntity<>(activitiesMapper.mapTo(savedActivityEntity), HttpStatus.CREATED);
+			LocationEntity locationEntity = locationMapper.mapFrom(_locationDTO);
+	     	LocationEntity savedLocationEntity = locationService.createLocation(locationEntity);
+	     	return new ResponseEntity<>(locationMapper.mapTo(savedLocationEntity), HttpStatus.CREATED);
 }
 
-*/
+
     
     
-    /*
     
-    	@DeleteMapping(path="/{id}")
-	public ResponseEntity<ApplicantDto> deleteApplicant(@PathVariable("id") String id) {
+    
+    @DeleteMapping(path="/{id}")
+	public ResponseEntity<LocationDTO> deleteLocation(@PathVariable("id") String id) {
 		
-		appService.delete(id);
+		locationService.delete(id);
 		
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
@@ -68,7 +78,7 @@ public ResponseEntity<ActivitiesDTO> createActivity(@RequestBody ActivitiesDTO _
     
     
     
-    */
+    
     
 
 }

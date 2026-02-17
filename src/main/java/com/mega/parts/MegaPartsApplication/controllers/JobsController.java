@@ -2,8 +2,11 @@ package com.mega.parts.MegaPartsApplication.controllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -54,15 +57,15 @@ public class JobsController{
 		Page<JobsEntity> jobs = jobsService.findAll(page);
 		return jobs.map(jobsMapper::mapTo);
 	}
-	 /*
+	 
 	
 	
 		 @GetMapping(path = "/{job_id}")
-	     public ResponseEntity<JobDTO> getActivity(@PathVariable("activity_id") Long id){
-	    	 Optional<ActivitiesEntity> foundActivity = activitiesService.findOne(id);
-	    	 return foundActivity.map(ActivitiesEntity ->{
-	    		 ActivitiesDTO activitiesDTO = activitiesMapper.mapTo(ActivitiesEntity);
-	    		 return new ResponseEntity<>(activitiesDTO, HttpStatus.OK);
+	     public ResponseEntity<JobDTO> getJob(@PathVariable("job_id") Long id){
+	    	 Optional<JobsEntity> foundJob = jobsService.findOne(id);
+	    	 return foundJob.map(JobsEntity ->{
+	    		 JobDTO jobsDTO = jobsMapper.mapTo(JobsEntity);
+	    		 return new ResponseEntity<>(jobsDTO, HttpStatus.OK);
 	    	 
 	    	 }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 	     }
@@ -71,23 +74,23 @@ public class JobsController{
 	
 	
 	
-	/*
+	
 
-    	     @PostMapping(path = "/new-activity")
-	     public ResponseEntity<ActivitiesDTO> createActivity(@RequestBody ActivitiesDTO _activitiesDTO){
+    	 @PostMapping(path = "/new-job")
+	     public ResponseEntity<JobDTO> createJob(@RequestBody JobDTO _jobsDTO){
 	          
-	     			ActivitiesEntity activityEntity = activitiesMapper.mapFrom(_activitiesDTO);
-	     	     	ActivitiesEntity savedActivityEntity = activitiesService.createActivity(activityEntity);
-	     	     	return new ResponseEntity<>(activitiesMapper.mapTo(savedActivityEntity), HttpStatus.CREATED);
+	     			JobsEntity jobEntity = jobsMapper.mapFrom(_jobsDTO);
+	     	     	JobsEntity savedJobEntity = jobsService.createJob(jobEntity);
+	     	     	return new ResponseEntity<>(jobsMapper.mapTo(savedJobEntity), HttpStatus.CREATED);
 	     }
     
-    */
+    
 	
 	
 	
 	
 	
-   */
+   
 
     // Read One
     @GetMapping("/{id}")
@@ -99,12 +102,12 @@ public class JobsController{
     
     
     
-    /*
     
-    	@DeleteMapping(path="/{id}")
-	public ResponseEntity<ApplicantDto> deleteApplicant(@PathVariable("id") String id) {
+    
+    @DeleteMapping(path="/{id}")
+	public ResponseEntity<JobDTO> deleteJob(@PathVariable("id") String id) {
 		
-		appService.delete(id);
+		jobsService.delete(id);
 		
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
@@ -112,6 +115,6 @@ public class JobsController{
     
     
     
-    */
+   
     
 }
