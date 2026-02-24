@@ -78,8 +78,8 @@ public class WarehouseController{
     
    
 
-@PostMapping(path = "/new-warehouse")
-public ResponseEntity<WarehouseDTO> createWarehouse(@RequestBody WarehouseDTO _warehouseDTO){
+    @PostMapping(path = "/new-warehouse")
+    public ResponseEntity<WarehouseDTO> createWarehouse(@RequestBody WarehouseDTO _warehouseDTO){
      
 			WarehouseEntity warehouseEntity = warehouseMapper.mapFrom(_warehouseDTO);
 	     	WarehouseEntity savedWarehouseEntity = warehouseService.createActivity(warehouseEntity);

@@ -72,17 +72,16 @@ public class CustomerController{
     
     
     
-/*
 
-    	     @PostMapping(path = "/new-activity")
-	     public ResponseEntity<ActivitiesDTO> createActivity(@RequestBody ActivitiesDTO _activitiesDTO){
+    	 @PostMapping(path = "/new-customer")
+	     public ResponseEntity<CustomerDTO> createCustomer(@RequestBody CustomerDTO _customerDTO){
 	          
-	     			ActivitiesEntity activityEntity = activitiesMapper.mapFrom(_activitiesDTO);
-	     	     	ActivitiesEntity savedActivityEntity = activitiesService.createActivity(activityEntity);
-	     	     	return new ResponseEntity<>(activitiesMapper.mapTo(savedActivityEntity), HttpStatus.CREATED);
+	     			CustomerEntity customerEntity = customerMapper.mapFrom(_customerDTO);
+	     	     	CustomerEntity savedCustomerEntity = customerService.createCustomer(activityEntity);
+	     	     	return new ResponseEntity<>(customerMapper.mapTo(savedCustomerEntity), HttpStatus.CREATED);
 	     }
     
-    */
+   
     @DeleteMapping(path="/{id}")
 	public ResponseEntity<CustomerDTO> deleteCustomer(@PathVariable("id") String id) {
 		
