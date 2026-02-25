@@ -4,6 +4,8 @@ package com.mega.parts.MegaPartsApplication.domain.entities;
 
 
 
+import java.util.UUID;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
@@ -24,8 +26,26 @@ import lombok.NoArgsConstructor;
 public class DepartmentsEntity{
 
 @Id
-private String department_id;
+private UUID department_id;
 private String department_name;
 private String manager_id;
+
+
+
+public UUID getDepartment_id() {
+	return department_id;
+}
+public void setDepartment_id(UUID department_id) {
+	this.department_id = department_id;
+}
+public String getDepartment_name() {
+	return department_name;
+}
+public void setDepartment_name(String department_name) {
+	this.department_name = department_name;
+}
+
+
+
 
 }

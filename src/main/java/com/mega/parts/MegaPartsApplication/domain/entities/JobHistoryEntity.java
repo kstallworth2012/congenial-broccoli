@@ -21,6 +21,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -33,7 +34,7 @@ public class JobHistoryEntity{
 
 @Id
 //@GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "jobHistory_id_seq")
-private Long jobHistoryId;
+private UUID jobHistoryId;
 
 
 @OneToOne(cascade = CascadeType.ALL)
@@ -49,6 +50,51 @@ private LocalDateTime end_date;
 @JoinColumn
 // (name = job_id)
 private JobsEntity job_id;
+
+
+
+
+
+
+
+public UUID getJobHistoryId() {
+	return jobHistoryId;
+}
+
+
+
+
+
+
+
+public void setJobHistoryId(UUID jobHistoryId) {
+	this.jobHistoryId = jobHistoryId;
+}
+
+
+
+
+
+
+
+public EmployeesEntity getEmployee_id() {
+	return employee_id;
+}
+
+
+
+
+
+
+
+public void setEmployee_id(EmployeesEntity employee_id) {
+	this.employee_id = employee_id;
+}
+
+
+
+
+
 
 
 //Job History can have many departments?

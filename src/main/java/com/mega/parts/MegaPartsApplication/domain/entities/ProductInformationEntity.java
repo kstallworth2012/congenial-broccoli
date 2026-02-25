@@ -12,6 +12,9 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
+
+import java.util.UUID;
+
 import jakarta.persistence.CascadeType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,7 +32,7 @@ public class ProductInformationEntity{
 
 
 	@Id
-	private Long product_info_id;
+	private UUID product_info_id;
 	private String product_name;
 	private String product_description;
 	private String category_id;
@@ -40,5 +43,21 @@ public class ProductInformationEntity{
 	private Double list_price;
 	private Double min_price;
 	private String catalog_url;
+	public UUID getProduct_info_id() {
+		return product_info_id;
+	}
+	public void setProduct_info_id(UUID product_info_id) {
+		this.product_info_id = product_info_id;
+	}
+	public String getProduct_name() {
+		return product_name;
+	}
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
+	}
+	
+	
+	
+	
 	
 }

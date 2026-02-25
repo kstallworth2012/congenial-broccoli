@@ -1,5 +1,7 @@
 package com.mega.parts.MegaPartsApplication.domain.entities;
 
+import java.util.UUID;
+
 import com.mega.parts.MegaPartsApplication.domain.entities.ProductInformationEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -26,11 +28,27 @@ import lombok.NoArgsConstructor;
 public class OrderItemEntity{
 
 	@Id
-	private Long line_item_id;
+	private UUID line_item_id;
 	@OneToOne
 	@JoinColumn(name = "product__info_id")
 	private ProductInformationEntity product_id;
 	private Double unit_price;
+	
+	
+	public UUID getLine_item_id() {
+		return line_item_id;
+	}
+	public void setLine_item_id(UUID line_item_id) {
+		this.line_item_id = line_item_id;
+	}
+	public ProductInformationEntity getProduct_id() {
+		return product_id;
+	}
+	public void setProduct_id(ProductInformationEntity product_id) {
+		this.product_id = product_id;
+	}
+	
+	
 	
 
 }

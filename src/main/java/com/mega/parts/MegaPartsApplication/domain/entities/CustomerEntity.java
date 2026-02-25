@@ -17,6 +17,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -26,7 +27,7 @@ import java.time.LocalDate;
 @Table(name = "customers")
 public class CustomerEntity{
 	@Id
-	private Long customer_id;
+	private UUID customer_id;
 	// private String customer_id; // not null number(6),
 	private String cust_first_name; // not null varchar2(20),
 	private String cust_last_name; // not null varchar2(20),
@@ -42,4 +43,23 @@ public class CustomerEntity{
 	private String marital_status; // varchar2(20),
 	private String gender; // varchar2(1),
 	private String income_level; // varchar2(20)
+	
+	
+	public UUID getCustomer_id() {
+		return customer_id;
+	}
+	public void setCustomer_id(UUID customer_id) {
+		this.customer_id = customer_id;
+	}
+	public String getCust_last_name() {
+		return cust_last_name;
+	}
+	public void setCust_last_name(String cust_last_name) {
+		this.cust_last_name = cust_last_name;
+	}
+	
+	
+	
+	
+	
 }

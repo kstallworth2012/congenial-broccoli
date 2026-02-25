@@ -17,6 +17,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -27,7 +28,7 @@ import java.time.LocalDateTime;
 public class EmployeesEntity{
 
 			@Id	
-			private Long employee_id;
+			private UUID employee_id;
 			private String first_name;
 			private String last_name;
 			private String email;
@@ -46,5 +47,27 @@ public class EmployeesEntity{
 			@OneToOne(cascade = CascadeType.ALL)
 			@JoinColumn(name = "department_id", referencedColumnName = "department_id")
 			private DepartmentsEntity department_id;
+
+
+			public UUID getEmployee_id() {
+				return employee_id;
+			}
+
+
+			public void setEmployee_id(UUID employee_id) {
+				this.employee_id = employee_id;
+			}
+
+
+			public String getLast_name() {
+				return last_name;
+			}
+
+
+			public void setLast_name(String last_name) {
+				this.last_name = last_name;
+			}
+			
+			
 			
 }

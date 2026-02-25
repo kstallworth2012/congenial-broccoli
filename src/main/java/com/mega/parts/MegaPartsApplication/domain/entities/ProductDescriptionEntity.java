@@ -11,6 +11,9 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
+
+import java.util.UUID;
+
 import jakarta.persistence.CascadeType;
 
 import lombok.AllArgsConstructor;
@@ -28,9 +31,21 @@ import lombok.NoArgsConstructor;
 public class ProductDescriptionEntity{
 
 	@Id
-	private Long product_id;
+	private UUID product_id;
 	private String language_id;
 	private String translated_name;
 	private String translated_description;
+	public UUID getProduct_id() {
+		return product_id;
+	}
+	public void setProduct_id(UUID product_id) {
+		this.product_id = product_id;
+	}
+	public String getLanguage_id() {
+		return language_id;
+	}
+	public void setLanguage_id(String language_id) {
+		this.language_id = language_id;
+	}
 	
 }

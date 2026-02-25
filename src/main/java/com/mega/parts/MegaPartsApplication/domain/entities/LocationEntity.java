@@ -9,6 +9,9 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
+
+import java.util.UUID;
+
 import jakarta.persistence.CascadeType;
 
 import lombok.AllArgsConstructor;
@@ -27,10 +30,27 @@ public class LocationEntity {
 
 
 	@Id 
-	private Long locations_id;
+	private UUID locations_id;
 	private String street_address;
 	private String postal_code;
 	private String city;
 	private String state_province;
 	private String country_id;
+	public UUID getLocations_id() {
+		return locations_id;
+	}
+	public void setLocations_id(UUID locations_id) {
+		this.locations_id = locations_id;
+	}
+	public String getStreet_address() {
+		return street_address;
+	}
+	public void setStreet_address(String street_address) {
+		this.street_address = street_address;
+	}
+	
+	
+	
+	
+	
 }

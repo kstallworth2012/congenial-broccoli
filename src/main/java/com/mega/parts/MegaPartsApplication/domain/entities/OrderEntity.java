@@ -2,6 +2,7 @@ package com.mega.parts.MegaPartsApplication.domain.entities;
 
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import com.mega.parts.MegaPartsApplication.domain.entities.CustomerEntity;
 
@@ -32,7 +33,7 @@ public class OrderEntity{
 
 
 				@Id 
-				private Long order_id;
+				private UUID order_id;
 	
 				private LocalDateTime order_date;
 				private String order_mode;
@@ -43,6 +44,19 @@ public class OrderEntity{
 				private Integer order_total;
 				private String sales_rep_id;
 				private String promotion_id;
+				public UUID getOrder_id() {
+					return order_id;
+				}
+				public void setOrder_id(UUID order_id) {
+					this.order_id = order_id;
+				}
+				public String getCustomer_id() {
+					return customer_id;
+				}
+				public void setCustomer_id(String customer_id) {
+					this.customer_id = customer_id;
+				}
+				
 
 
 	

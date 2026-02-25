@@ -10,6 +10,9 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
+
+import java.util.UUID;
+
 import jakarta.persistence.CascadeType;
 
 import lombok.AllArgsConstructor;
@@ -27,5 +30,16 @@ import lombok.NoArgsConstructor;
 public class RegionsEntity{
 
 	@Id
-	private Long region_id;
+	private UUID region_id;
+
+	public UUID getRegion_id() {
+		return region_id;
+	}
+
+	public void setRegion_id(UUID region_id) {
+		this.region_id = region_id;
+	}
+	
+	
+	
 }

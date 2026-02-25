@@ -10,6 +10,9 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
+
+import java.util.UUID;
+
 import jakarta.persistence.CascadeType;
 
 
@@ -28,8 +31,27 @@ import lombok.NoArgsConstructor;
 public class InventoryEntity{
 
 	@Id
-	private String inventory_id;
+	private UUID inventory_id;
 	private Integer warehouse_id;
 	private Integer product_id;
 	private Integer quantity_on_hand;
+	
+	
+	public UUID getInventory_id() {
+		return inventory_id;
+	}
+	public void setInventory_id(UUID inventory_id) {
+		this.inventory_id = inventory_id;
+	}
+	public Integer getWarehouse_id() {
+		return warehouse_id;
+	}
+	public void setWarehouse_id(Integer warehouse_id) {
+		this.warehouse_id = warehouse_id;
+	}
+	
+	
+	
+	
+	
 }
