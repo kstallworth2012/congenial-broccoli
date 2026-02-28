@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
@@ -39,16 +40,16 @@ public class LocationController{
     public List<LocationDTO> getAllLocations() {
     	List<LocationEntity> locations = locationService.findAll();
     	
-        return locations.stream().map(locationMapper::mapTo).collection(Collectors.toList());
+        return locations.stream().map(locationMapper::mapTo).collect(Collectors.toList());
     }
 
     // Read One
-    @GetMapping("/{id}")
-    public ResponseEntity<LocationEntity> getLocationById(@PathVariable Long id) {
-        return locationRepository.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
+//    @GetMapping("/{id}")
+//    public ResponseEntity<LocationEntity> getLocationById(@PathVariable Long id) {
+//        return locationRepository.findById(id)
+//                .map(ResponseEntity::ok)
+//                .orElse(ResponseEntity.notFound().build());
+//    }
 
     
     
@@ -68,7 +69,7 @@ public class LocationController{
     
     
     @DeleteMapping(path="/{id}")
-	public ResponseEntity<LocationDTO> deleteLocation(@PathVariable("id") String id) {
+	public ResponseEntity<LocationDTO> deleteLocation(@PathVariable("id") UUID id) {
 		
 		locationService.delete(id);
 		

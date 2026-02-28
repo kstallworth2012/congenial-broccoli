@@ -25,19 +25,19 @@ public class JobHistoryController{
 
 
     // Read All
-    @GetMapping
-    public Iterable<JobHistoryEntity> getAllJobHistories() {
-        return JobHistoryRepository.findAll();
-    }
-
-    // Read One
-    @GetMapping("/{id}")
-    public ResponseEntity<JobHistoryEntity> getJobHistoryById(@PathVariable Long id) {
-        return JobHistoryRepository.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
-    
+//    @GetMapping
+//    public Iterable<JobHistoryEntity> getAllJobHistories() {
+//        return JobHistoryRepository.findAll();
+//    }
+//
+//    // Read One
+//    @GetMapping("/{id}")
+//    public ResponseEntity<JobHistoryEntity> getJobHistoryById(@PathVariable Long id) {
+//        return JobHistoryRepository.findById(id)
+//                .map(ResponseEntity::ok)
+//                .orElse(ResponseEntity.notFound().build());
+//    }
+//    
     
     
     

@@ -48,7 +48,7 @@ public class JobsServiceImpl implements JobsService {
 	@Override
 	public boolean isExists(UUID id) {
 		// TODO Auto-generated method stub
-		return jobsRepository.existsById(id)
+		return jobsRepository.existsById(id);
 	}
 
 

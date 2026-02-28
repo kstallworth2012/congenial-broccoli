@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
@@ -17,8 +18,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.example.workflow.workmanagementapp.domain.dto.ActivitiesDTO;
-import com.example.workflow.workmanagementapp.domain.entities.ActivitiesEntity;
+
 import com.mega.parts.MegaPartsApplication.domain.dto.OrderDTO;
 import com.mega.parts.MegaPartsApplication.domain.entities.OrderEntity;
 import com.mega.parts.MegaPartsApplication.mappers.Mapper;
@@ -92,7 +92,7 @@ public class OrderController{
     
     
     @DeleteMapping(path="/{id}")
-	public ResponseEntity<OrderDTO> deleteApplicant(@PathVariable("id") String id) {
+	public ResponseEntity<OrderDTO> deleteApplicant(@PathVariable("id") UUID id) {
 		
 		orderService.delete(id);
 		

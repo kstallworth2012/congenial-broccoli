@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
@@ -55,7 +56,7 @@ public class WarehouseController{
 
  // Read One
     @GetMapping(path = "/{warehouse_id}")
-   	public ResponseEntity<WarehouseDTO> getWarehouseById(@PathVariable("warehouse_id") Long id){
+   	public ResponseEntity<WarehouseDTO> getWarehouseById(@PathVariable("warehouse_id") UUID id){
    	    	 Optional<WarehouseEntity> foundWarehouse = warehouseService.findOne(id);
    	    	 return foundWarehouse.map(WarehouseEntity ->{
    	    		 WarehouseDTO warehouseDTO = warehouseMapper.mapTo(WarehouseEntity);
@@ -82,7 +83,7 @@ public class WarehouseController{
     public ResponseEntity<WarehouseDTO> createWarehouse(@RequestBody WarehouseDTO _warehouseDTO){
      
 			WarehouseEntity warehouseEntity = warehouseMapper.mapFrom(_warehouseDTO);
-	     	WarehouseEntity savedWarehouseEntity = warehouseService.createActivity(warehouseEntity);
+	     	WarehouseEntity savedWarehouseEntity = warehouseService.createWarehouse(warehouseEntity);
 	     	return new ResponseEntity<>(warehouseMapper.mapTo(savedWarehouseEntity), HttpStatus.CREATED);
 }
 
@@ -99,7 +100,7 @@ public class WarehouseController{
     
     
     @DeleteMapping(path="/{id}")
-	public ResponseEntity<WarehouseDTO> deleteWarehouse(@PathVariable("id") String id) {
+	public ResponseEntity<WarehouseDTO> deleteWarehouse(@PathVariable("id") UUID id) {
 		
 		warehouseService.delete(id);
 		

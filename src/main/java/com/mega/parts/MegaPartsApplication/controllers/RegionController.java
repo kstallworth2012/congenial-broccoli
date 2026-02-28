@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
@@ -56,7 +57,7 @@ public class RegionController{
   
 
    	     @GetMapping(path = "/{region_id}")
-   	     public ResponseEntity<RegionsDTO> getRegion(@PathVariable("region_id") Long id){
+   	     public ResponseEntity<RegionsDTO> getRegion(@PathVariable("region_id") UUID id){
    	    	 Optional<RegionsEntity> foundRegion = regionService.findOne(id);
    	    	 return foundRegion.map(RegionEntity ->{
    	    		 RegionsDTO regionsDTO = regionMapper.mapTo(RegionEntity);
@@ -82,7 +83,7 @@ public class RegionController{
     public ResponseEntity<RegionsDTO> createRegion(@RequestBody RegionsDTO _regionDTO){
      
 			RegionsEntity warehouseEntity = regionMapper.mapFrom(_regionDTO);
-	     	RegionsEntity savedWarehouseEntity = regionService.createRegion(warehouseEntity);
+	     	RegionsEntity savedWarehouseEntity = regionService.createRegions(warehouseEntity);
 	     	return new ResponseEntity<>(regionMapper.mapTo(savedWarehouseEntity), HttpStatus.CREATED);
 }
 
@@ -91,7 +92,7 @@ public class RegionController{
     
     
     @DeleteMapping(path="/{id}")
-	public ResponseEntity<RegionsDTO> deleteRegion(@PathVariable("id") String id) {
+	public ResponseEntity<RegionsDTO> deleteRegion(@PathVariable("id") UUID id) {
 		
 		regionService.delete(id);
 		

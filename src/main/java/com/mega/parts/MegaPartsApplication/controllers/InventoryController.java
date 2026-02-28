@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.mega.parts.MegaPartsApplication.domain.dto.InventoryDTO;
 import com.mega.parts.MegaPartsApplication.domain.entities.InventoryEntity;
@@ -59,7 +60,7 @@ public class InventoryController{
  
 
    	     @GetMapping(path = "/{inventory_id}")
-   	     public ResponseEntity<InventoryDTO> getInventory(@PathVariable("inventoryy_id") Long id){
+   	     public ResponseEntity<InventoryDTO> getInventory(@PathVariable("inventoryy_id") UUID id){
    	    	 Optional<InventoryEntity> foundInventory = inventoryService.findOne(id);
    	    	 return foundInventory.map(InventoryEntity ->{
    	    		 InventoryDTO inventoryDTO = inventoryMapper.mapTo(InventoryEntity);
@@ -87,12 +88,12 @@ public ResponseEntity<InventoryDTO> createInventory(@RequestBody InventoryDTO _i
     
     
     // Read One
-    @GetMapping("/{id}")
-    public ResponseEntity<InventoryEntity> getInventoryById(@PathVariable UUID id) {
-        return inventoryRepository.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
+//    @GetMapping("/{id}")
+//    public ResponseEntity<InventoryEntity> getInventoryById(@PathVariable UUID id) {
+//        return inventoryRepository.findById(id)
+//                .map(ResponseEntity::ok)
+//                .orElse(ResponseEntity.notFound().build());
+//    }
     
     
     

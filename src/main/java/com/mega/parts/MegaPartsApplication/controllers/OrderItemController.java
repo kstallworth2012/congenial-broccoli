@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
@@ -57,7 +58,7 @@ public class OrderItemController{
   
 
    	     @GetMapping(path = "/{orderItem_id}")
-   	     public ResponseEntity<OrderItemDTO> getOrderItem(@PathVariable("orderItem_id") Long id){
+   	     public ResponseEntity<OrderItemDTO> getOrderItem(@PathVariable("orderItem_id") UUID id){
    	    	 Optional<OrderItemEntity> foundOrderItemDTO = orderItemService.findOne(id);
    	    	 return foundOrderItemDTO.map(OrderItemEntity ->{
    	    		 OrderItemDTO orderItemDTO = orderItemMapper.mapTo(OrderItemEntity);
@@ -81,12 +82,12 @@ public class OrderItemController{
     
 
     // Read One
-    @GetMapping("/{id}")
-    public ResponseEntity<OrderItemEntity> getOrderItemById(@PathVariable Long id) {
-        return orderItemRepository.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
+//    @GetMapping("/{id}")
+//    public ResponseEntity<OrderItemEntity> getOrderItemById(@PathVariable UUID id) {
+//        return orderItemRepository.findById(id)
+//                .map(ResponseEntity::ok)
+//                .orElse(ResponseEntity.notFound().build());
+//    }
     
    
 
@@ -94,7 +95,7 @@ public class OrderItemController{
 public ResponseEntity<OrderItemDTO> createOrderItem(@RequestBody OrderItemDTO _orderItemDTO){
      
 			OrderItemEntity orderItemEntity =orderItemMapper.mapFrom(_orderItemDTO);
-	     	OrderItemEntity savedOrderItemEntity = orderItemService.createOrderItemEntity);
+	     	OrderItemEntity savedOrderItemEntity = orderItemService.createOrderItem(orderItemEntity);
 	     	return new ResponseEntity<>(orderItemMapper.mapTo(savedOrderItemEntity), HttpStatus.CREATED);
 }
 
@@ -104,7 +105,7 @@ public ResponseEntity<OrderItemDTO> createOrderItem(@RequestBody OrderItemDTO _o
     
     
     @DeleteMapping(path="/{id}")
-	public ResponseEntity<OrderItemDTO> deleteOrderItem(@PathVariable("id") String id) {
+	public ResponseEntity<OrderItemDTO> deleteOrderItem(@PathVariable("id") UUID id) {
 		
 		orderItemService.delete(id);
 		

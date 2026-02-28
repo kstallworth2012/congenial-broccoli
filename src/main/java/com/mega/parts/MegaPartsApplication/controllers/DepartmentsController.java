@@ -69,12 +69,12 @@ public class DepartmentsController{
     
 
     // Read One
-    @GetMapping("/{id}")
-    public ResponseEntity<DepartmentsEntity> getDepartmentById(@PathVariable UUID id) {
-        return departmentsRepository.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
+//    @GetMapping("/{id}")
+//    public ResponseEntity<DepartmentsEntity> getDepartmentById(@PathVariable UUID id) {
+//        return departmentsRepository.findById(id)
+//                .map(ResponseEntity::ok)
+//                .orElse(ResponseEntity.notFound().build());
+//    }
     
     
     /*

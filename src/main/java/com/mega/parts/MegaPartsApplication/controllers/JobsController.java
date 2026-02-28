@@ -18,8 +18,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.example.workflow.workmanagementapp.domain.dto.ActivitiesDTO;
-import com.example.workflow.workmanagementapp.domain.entities.ActivitiesEntity;
+
 import com.mega.parts.MegaPartsApplication.domain.dto.JobDTO;
 import com.mega.parts.MegaPartsApplication.domain.entities.JobsEntity;
 import com.mega.parts.MegaPartsApplication.mappers.Mapper;
@@ -94,14 +93,14 @@ public class JobsController{
    
 
     // Read One
-    @GetMapping("/{id}")
-    public ResponseEntity<JobsEntity> getJobsById(@PathVariable UUID id) {
-        return jobsRepository.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
-    
-    
+//    @GetMapping("/{id}")
+//    public ResponseEntity<JobsEntity> getJobsById(@PathVariable UUID id) {
+//        return jobsRepository.findById(id)
+//                .map(ResponseEntity::ok)
+//                .orElse(ResponseEntity.notFound().build());
+//    }
+//    
+//    
     
     
     
