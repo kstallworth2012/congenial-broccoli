@@ -37,6 +37,18 @@ public class InventoryEntity{
 	private Integer quantity_on_hand;
 	
 	
+	public Integer getProduct_id() {
+		return product_id;
+	}
+	public void setProduct_id(Integer product_id) {
+		this.product_id = product_id;
+	}
+	public Integer getQuantity_on_hand() {
+		return quantity_on_hand;
+	}
+	public void setQuantity_on_hand(Integer quantity_on_hand) {
+		this.quantity_on_hand = quantity_on_hand;
+	}
 	public UUID getInventory_id() {
 		return inventory_id;
 	}

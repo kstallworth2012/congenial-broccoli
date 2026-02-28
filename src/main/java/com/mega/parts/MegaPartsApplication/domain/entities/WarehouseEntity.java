@@ -36,7 +36,28 @@ public class WarehouseEntity{
 	private String warehouse_name;
 	private String location_id;
 	private String wh_geo_location;
-	public UUID getWarehouse_id() {
+
+	
+	
+	public String getWarehouse_spec() {
+		return warehouse_spec;
+	}
+	public void setWarehouse_spec(String warehouse_spec) {
+		this.warehouse_spec = warehouse_spec;
+	}
+	public String getLocation_id() {
+		return location_id;
+	}
+	public void setLocation_id(String location_id) {
+		this.location_id = location_id;
+	}
+	public String getWh_geo_location() {
+		return wh_geo_location;
+	}
+	public void setWh_geo_location(String wh_geo_location) {
+		this.wh_geo_location = wh_geo_location;
+	}
+	UUID getWarehouse_id() {
 		return warehouse_id;
 	}
 	public void setWarehouse_id(UUID warehouse_id) {

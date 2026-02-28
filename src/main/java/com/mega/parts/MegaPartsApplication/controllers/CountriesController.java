@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -18,8 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.example.workflow.workmanagementapp.domain.dto.ActivitiesDTO;
-import com.example.workflow.workmanagementapp.domain.entities.ActivitiesEntity;
+
 import com.mega.parts.MegaPartsApplication.domain.dto.CountriesDTO;
 import com.mega.parts.MegaPartsApplication.domain.entities.CountriesEntity;
 import com.mega.parts.MegaPartsApplication.mappers.Mapper;
@@ -60,7 +60,7 @@ public class CountriesController{
 
    		 // Read One
    	     @GetMapping(path = "/{country_id}")
-   	     public ResponseEntity<CountriesDTO> getCountry(@PathVariable("country_id") Long id){
+   	     public ResponseEntity<CountriesDTO> getCountry(@PathVariable("country_id") UUID id){
    	    	 Optional<CountriesEntity> foundCountry = countriesService.findOne(id);
    	    	 return foundCountry.map(CountriesEntity ->{
    	    		 CountriesDTO countryDTO = countriesMapper.mapTo(CountriesEntity);
@@ -86,7 +86,7 @@ public class CountriesController{
     
    
     @DeleteMapping(path="/{id}")
-	public ResponseEntity<CountriesDTO> deleteApplicant(@PathVariable("id") String id) {
+	public ResponseEntity<CountriesDTO> deleteApplicant(@PathVariable("id") UUID id) {
 		
 		countriesService.delete(id);
 		

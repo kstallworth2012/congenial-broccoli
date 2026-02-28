@@ -2,9 +2,12 @@ package com.mega.parts.MegaPartsApplication.services.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.mega.parts.MegaPartsApplication.domain.entities.JobHistoryEntity;
@@ -37,15 +40,39 @@ public class JobHistoryServiceImpl implements JobHistoryService {
 	}
 
 	@Override
-	public Optional<JobHistoryEntity> findOne(String id) {
+	public Optional<JobHistoryEntity> findOne(UUID id) {
 		// TODO Auto-generated method stub
 		return jobHistoryRepository.findById(id);
 	}
 
 	@Override
-	public boolean isExists(String id) {
+	public boolean isExists(UUID id) {
 		// TODO Auto-generated method stub
 		return jobHistoryRepository.existsById(id);
+	}
+
+	@Override
+	public Page<JobHistoryEntity> findAll(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public JobHistoryEntity partialUpdate(UUID _id, JobHistoryEntity _jobHistory) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete(UUID _id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public JobHistoryEntity save(JobHistoryEntity jobHistoryEntity) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

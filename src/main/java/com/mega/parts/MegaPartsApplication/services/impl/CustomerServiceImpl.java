@@ -2,9 +2,12 @@ package com.mega.parts.MegaPartsApplication.services.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.mega.parts.MegaPartsApplication.domain.entities.CustomerEntity;
@@ -37,16 +40,47 @@ public class CustomerServiceImpl implements CustomerService {
 
 	}
 
-	@Override
-	public Optional<CustomerEntity> findOne(Long id) {
-		// TODO Auto-generated method stub
-		return customerRepository.findById(id);
-	}
+
 
 	@Override
-	public boolean isExists(Long id) {
+	public Optional<CustomerEntity> findOne(UUID id) {
 		// TODO Auto-generated method stub
-		return customerRepository.existsById(id);
+		return Optional.empty();
+	}
+
+
+	@Override
+	public boolean isExists(UUID id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	@Override
+	public Page<CustomerEntity> findAll(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public CustomerEntity partialUpdate(UUID _id, CustomerEntity _customer) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public void delete(UUID _id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public CustomerEntity save(CustomerEntity _customer) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

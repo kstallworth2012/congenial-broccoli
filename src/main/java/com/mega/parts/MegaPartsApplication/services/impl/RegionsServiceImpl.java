@@ -2,9 +2,12 @@ package com.mega.parts.MegaPartsApplication.services.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.mega.parts.MegaPartsApplication.domain.entities.RegionsEntity;
@@ -38,15 +41,39 @@ public class RegionsServiceImpl implements RegionsService {
 	}
 
 	@Override
-	public Optional<RegionsEntity> findOne(Long id) {
+	public Optional<RegionsEntity> findOne(UUID id) {
 		// TODO Auto-generated method stub
 		return regionsRepository.findById(id);
 	}
 
 	@Override
-	public boolean isExists(Long id) {
+	public boolean isExists(UUID id) {
 		// TODO Auto-generated method stub
 		return regionsRepository.existsById(id);
+	}
+
+	@Override
+	public Page<RegionsEntity> findAll(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public RegionsEntity partialUpdate(UUID _id, RegionsEntity _Regions) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete(UUID _id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public RegionsEntity save(RegionsEntity Entity) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

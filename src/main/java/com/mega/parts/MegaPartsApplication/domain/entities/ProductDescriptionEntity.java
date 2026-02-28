@@ -35,6 +35,22 @@ public class ProductDescriptionEntity{
 	private String language_id;
 	private String translated_name;
 	private String translated_description;
+	
+	
+	
+	
+	public String getTranslated_name() {
+		return translated_name;
+	}
+	public void setTranslated_name(String translated_name) {
+		this.translated_name = translated_name;
+	}
+	public String getTranslated_description() {
+		return translated_description;
+	}
+	public void setTranslated_description(String translated_description) {
+		this.translated_description = translated_description;
+	}
 	public UUID getProduct_id() {
 		return product_id;
 	}

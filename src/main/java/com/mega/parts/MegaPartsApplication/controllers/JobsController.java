@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
@@ -52,16 +53,16 @@ public class JobsController{
     
  
    	 //PAGEABLE
-	@GetMapping(path="/")
-	public Page<JobDTO> listJobs(Pageable page){
-		Page<JobsEntity> jobs = jobsService.findAll(page);
-		return jobs.map(jobsMapper::mapTo);
-	}
-	 
+//	@GetMapping(path="/")
+//	public Page<JobDTO> listJobs(Pageable page){
+//		Page<JobsEntity> jobs = jobsService.findAll(page);
+//		return jobs.map(jobsMapper::mapTo);
+//	}
+//	 
 	
 	
 		 @GetMapping(path = "/{job_id}")
-	     public ResponseEntity<JobDTO> getJob(@PathVariable("job_id") Long id){
+	     public ResponseEntity<JobDTO> getJob(@PathVariable("job_id") UUID id){
 	    	 Optional<JobsEntity> foundJob = jobsService.findOne(id);
 	    	 return foundJob.map(JobsEntity ->{
 	    		 JobDTO jobsDTO = jobsMapper.mapTo(JobsEntity);
@@ -94,7 +95,7 @@ public class JobsController{
 
     // Read One
     @GetMapping("/{id}")
-    public ResponseEntity<JobsEntity> getJobsById(@PathVariable Long id) {
+    public ResponseEntity<JobsEntity> getJobsById(@PathVariable UUID id) {
         return jobsRepository.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -105,7 +106,7 @@ public class JobsController{
     
     
     @DeleteMapping(path="/{id}")
-	public ResponseEntity<JobDTO> deleteJob(@PathVariable("id") String id) {
+	public ResponseEntity<JobDTO> deleteJob(@PathVariable("id") UUID id) {
 		
 		jobsService.delete(id);
 		

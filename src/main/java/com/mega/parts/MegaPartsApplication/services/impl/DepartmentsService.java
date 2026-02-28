@@ -2,9 +2,12 @@ package com.mega.parts.MegaPartsApplication.services.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.mega.parts.MegaPartsApplication.domain.entities.DepartmentsEntity;
@@ -29,15 +32,39 @@ public class DepartmentsService implements com.mega.parts.MegaPartsApplication.s
 	}
 
 	@Override
-	public Optional<DepartmentsEntity> findOne(String id) {
+	public Optional<DepartmentsEntity> findOne(UUID id) {
 		// TODO Auto-generated method stub
 		return departmentsRepository.findById(id);
 	}
 
 	@Override
-	public boolean isExists(String id) {
+	public boolean isExists(UUID id) {
 		// TODO Auto-generated method stub
 		return departmentsRepository.existsById(id);
+	}
+
+	@Override
+	public Page<DepartmentsEntity> findAll(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public DepartmentsEntity partialUpdate(UUID _id, DepartmentsEntity _departments) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete(UUID _id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public DepartmentsEntity save(DepartmentsEntity _dept) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -2,9 +2,12 @@ package com.mega.parts.MegaPartsApplication.services.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.mega.parts.MegaPartsApplication.domain.entities.WarehouseEntity;
@@ -36,15 +39,39 @@ public class WarehouseServiceImpl implements WarehouseService {
 	}
 
 	@Override
-	public Optional<WarehouseEntity> findOne(String id) {
+	public Optional<WarehouseEntity> findOne(UUID id) {
 		// TODO Auto-generated method stub
 		return warehouseRepository.findById(id);
 	}
 
 	@Override
-	public boolean isExists(String id) {
+	public boolean isExists(UUID id) {
 		// TODO Auto-generated method stub
 		return warehouseRepository.existsById(id);
+	}
+
+	@Override
+	public Page<WarehouseEntity> findAll(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public WarehouseEntity partialUpdate(UUID _id, WarehouseEntity _warehouse) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete(UUID _id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public WarehouseEntity save(WarehouseEntity warehouse) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

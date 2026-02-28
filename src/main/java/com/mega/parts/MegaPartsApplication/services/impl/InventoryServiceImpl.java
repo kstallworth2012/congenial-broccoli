@@ -2,9 +2,12 @@ package com.mega.parts.MegaPartsApplication.services.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.mega.parts.MegaPartsApplication.domain.entities.InventoryEntity;
@@ -37,15 +40,39 @@ public class InventoryServiceImpl implements InventoryService {
 	}
 
 	@Override
-	public Optional<InventoryEntity> findOne(String id) {
+	public Optional<InventoryEntity> findOne(UUID id) {
 		// TODO Auto-generated method stub
 		return inventoryRepository.findById(id);
 	}
 
 	@Override
-	public boolean isExists(String id) {
+	public boolean isExists(UUID id) {
 		// TODO Auto-generated method stub
 		return inventoryRepository.existsById(id);
+	}
+
+	@Override
+	public Page<InventoryEntity> findAll(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public InventoryEntity partialUpdate(UUID _id, InventoryEntity _inventory) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete(UUID _id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public InventoryEntity save(InventoryEntity inventoryEntity) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

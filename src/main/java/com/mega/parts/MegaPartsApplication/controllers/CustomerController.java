@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
@@ -17,8 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.example.workflow.workmanagementapp.domain.dto.ActivitiesDTO;
-import com.example.workflow.workmanagementapp.domain.entities.ActivitiesEntity;
+
 import com.mega.parts.MegaPartsApplication.domain.dto.CustomerDTO;
 import com.mega.parts.MegaPartsApplication.domain.entities.CustomerEntity;
 import com.mega.parts.MegaPartsApplication.mappers.Mapper;
@@ -33,7 +33,7 @@ public class CustomerController{
 	private CustomerService customerService;
 	private Mapper<CustomerEntity, CustomerDTO> customerMapper;
 
-    public CustomerController(CustomerService _customerService,Mapper<CustomerEntity, CustomerDto> _customerMapper) {
+    public CustomerController(Mapper<CustomerEntity, CustomerDTO> _customerMapper, CustomerService _customerService) {
         this.customerService = _customerService;
         this.customerMapper = _customerMapper;
     }
@@ -48,17 +48,17 @@ public class CustomerController{
 
     
   
-    //PAGEABLE
-   	@GetMapping(path="/")
-   	public Page<CustomerDTO> listCustomers(Pageable page){
-   		Page<CustomerEntity> customers = customerService.findAll(page);
-   		return customers.map(customerMapper::mapTo);
-   	}
+//    //PAGEABLE
+//   	@GetMapping(path="/")
+//   	public Page<CustomerDTO> listCustomers(Pageable page){
+//   		Page<CustomerEntity> customers = customerService.findAll(page);
+//   		return customers.map(customerMapper::mapTo);
+//   	}
    	  
 
    	// Read One
    	 @GetMapping(path = "/{customer_id}")
-   	 public ResponseEntity<CustomerDTO> getCustomer(@PathVariable("customer_id") Long id){
+   	 public ResponseEntity<CustomerDTO> getCustomer(@PathVariable("customer_id") UUID id){
    	    	 Optional<CustomerEntity> foundCustomer = customerService.findOne(id);
    	    	 return foundCustomer.map(CustomerEntity ->{
    	    		 CustomerDTO customerDTO = customerMapper.mapTo(CustomerEntity);
@@ -77,13 +77,13 @@ public class CustomerController{
 	     public ResponseEntity<CustomerDTO> createCustomer(@RequestBody CustomerDTO _customerDTO){
 	          
 	     			CustomerEntity customerEntity = customerMapper.mapFrom(_customerDTO);
-	     	     	CustomerEntity savedCustomerEntity = customerService.createCustomer(activityEntity);
+	     	     	CustomerEntity savedCustomerEntity = customerService.createCustomer(customerEntity);
 	     	     	return new ResponseEntity<>(customerMapper.mapTo(savedCustomerEntity), HttpStatus.CREATED);
 	     }
     
    
     @DeleteMapping(path="/{id}")
-	public ResponseEntity<CustomerDTO> deleteCustomer(@PathVariable("id") String id) {
+	public ResponseEntity<CustomerDTO> deleteCustomer(@PathVariable("id") UUID id) {
 		
 		customerService.delete(id);
 		

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
@@ -87,7 +88,7 @@ public ResponseEntity<InventoryDTO> createInventory(@RequestBody InventoryDTO _i
     
     // Read One
     @GetMapping("/{id}")
-    public ResponseEntity<InventoryEntity> getInventoryById(@PathVariable Long id) {
+    public ResponseEntity<InventoryEntity> getInventoryById(@PathVariable UUID id) {
         return inventoryRepository.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -98,7 +99,7 @@ public ResponseEntity<InventoryDTO> createInventory(@RequestBody InventoryDTO _i
     
     
     @DeleteMapping(path="/{id}")
-	public ResponseEntity<InventoryDTO> deleteInventory(@PathVariable("id") String id) {
+	public ResponseEntity<InventoryDTO> deleteInventory(@PathVariable("id") UUID id) {
 		
 		inventoryService.delete(id);
 		

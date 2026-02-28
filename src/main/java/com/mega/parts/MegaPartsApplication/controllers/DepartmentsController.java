@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
@@ -69,7 +70,7 @@ public class DepartmentsController{
 
     // Read One
     @GetMapping("/{id}")
-    public ResponseEntity<DepartmentsEntity> getDepartmentById(@PathVariable Long id) {
+    public ResponseEntity<DepartmentsEntity> getDepartmentById(@PathVariable UUID id) {
         return departmentsRepository.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());

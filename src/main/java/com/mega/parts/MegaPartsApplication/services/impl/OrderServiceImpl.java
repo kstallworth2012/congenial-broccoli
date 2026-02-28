@@ -3,9 +3,12 @@ package com.mega.parts.MegaPartsApplication.services.impl;
 import java.util.List;
 
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.mega.parts.MegaPartsApplication.domain.entities.OrderEntity;
@@ -37,16 +40,41 @@ public class OrderServiceImpl implements OrderService {
 		// TODO Auto-generated method stub
 		return StreamSupport.stream(orderRepository.findAll().spliterator(),false).collect(Collectors.toList());	}
 
+
 	@Override
-	public Optional<OrderEntity> findOne(String id) {
+	public Optional<OrderEntity> findOne(UUID id) {
 		// TODO Auto-generated method stub
-		return orderRepository.findById(id);
+		return Optional.empty();
 	}
 
 	@Override
-	public boolean isExists(String id) {
+	public boolean isExists(UUID id) {
 		// TODO Auto-generated method stub
-		return orderRepository.existsById(id);
+		return false;
+	}
+
+	@Override
+	public Page<OrderEntity> findAll(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public OrderEntity partialUpdate(UUID _id, OrderEntity _order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete(UUID _id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public OrderEntity save(OrderEntity _order) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

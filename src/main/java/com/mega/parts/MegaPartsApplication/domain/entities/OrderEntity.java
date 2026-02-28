@@ -44,6 +44,45 @@ public class OrderEntity{
 				private Integer order_total;
 				private String sales_rep_id;
 				private String promotion_id;
+				
+				
+				
+				public LocalDateTime getOrder_date() {
+					return order_date;
+				}
+				public void setOrder_date(LocalDateTime order_date) {
+					this.order_date = order_date;
+				}
+				public String getOrder_mode() {
+					return order_mode;
+				}
+				public void setOrder_mode(String order_mode) {
+					this.order_mode = order_mode;
+				}
+				public String getOrder_status() {
+					return order_status;
+				}
+				public void setOrder_status(String order_status) {
+					this.order_status = order_status;
+				}
+				public Integer getOrder_total() {
+					return order_total;
+				}
+				public void setOrder_total(Integer order_total) {
+					this.order_total = order_total;
+				}
+				public String getSales_rep_id() {
+					return sales_rep_id;
+				}
+				public void setSales_rep_id(String sales_rep_id) {
+					this.sales_rep_id = sales_rep_id;
+				}
+				public String getPromotion_id() {
+					return promotion_id;
+				}
+				public void setPromotion_id(String promotion_id) {
+					this.promotion_id = promotion_id;
+				}
 				public UUID getOrder_id() {
 					return order_id;
 				}

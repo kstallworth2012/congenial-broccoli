@@ -43,6 +43,65 @@ public class ProductInformationEntity{
 	private Double list_price;
 	private Double min_price;
 	private String catalog_url;
+	
+	
+	
+	
+	
+	public String getProduct_description() {
+		return product_description;
+	}
+	public void setProduct_description(String product_description) {
+		this.product_description = product_description;
+	}
+	public String getCategory_id() {
+		return category_id;
+	}
+	public void setCategory_id(String category_id) {
+		this.category_id = category_id;
+	}
+	public String getWeight_class() {
+		return weight_class;
+	}
+	public void setWeight_class(String weight_class) {
+		this.weight_class = weight_class;
+	}
+	public String getWarranty_period() {
+		return warranty_period;
+	}
+	public void setWarranty_period(String warranty_period) {
+		this.warranty_period = warranty_period;
+	}
+	public String getSupplier_id() {
+		return supplier_id;
+	}
+	public void setSupplier_id(String supplier_id) {
+		this.supplier_id = supplier_id;
+	}
+	public String getProduct_status() {
+		return product_status;
+	}
+	public void setProduct_status(String product_status) {
+		this.product_status = product_status;
+	}
+	public Double getList_price() {
+		return list_price;
+	}
+	public void setList_price(Double list_price) {
+		this.list_price = list_price;
+	}
+	public Double getMin_price() {
+		return min_price;
+	}
+	public void setMin_price(Double min_price) {
+		this.min_price = min_price;
+	}
+	public String getCatalog_url() {
+		return catalog_url;
+	}
+	public void setCatalog_url(String catalog_url) {
+		this.catalog_url = catalog_url;
+	}
 	public UUID getProduct_info_id() {
 		return product_info_id;
 	}
